@@ -1,0 +1,4 @@
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.Logger\bin\Debug\ISC.Logger.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.Logger\bin\Debug\ISC.Logger.pdb
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.Logger\obj\Debug\ISC.Logger.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.Logger\obj\Debug\ISC.Logger.pdb

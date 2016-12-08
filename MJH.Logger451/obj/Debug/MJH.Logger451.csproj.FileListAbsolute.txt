@@ -1,0 +1,9 @@
+D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger451\bin\Debug\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger451\bin\Debug\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger451\obj\Debug\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger451\obj\Debug\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger451\bin\Debug\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger451\bin\Debug\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger451\obj\Debug\MJH.Logger451.csprojResolveAssemblyReference.cache
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger451\obj\Debug\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger451\obj\Debug\MJH.Logger.pdb

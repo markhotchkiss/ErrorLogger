@@ -1,0 +1,9 @@
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\ISC.UnitTests.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\ISC.UnitTests.pdb
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\ISC.Logger.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\nunit.framework.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\ISC.Logger.pdb
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\bin\Debug\nunit.framework.xml
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\obj\Debug\ISC.UnitTests.csprojResolveAssemblyReference.cache
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\obj\Debug\ISC.UnitTests.dll
+D:\SourceCode\VS2015\Projects\Birmingham City Council\ISC.Logger\ISC.UnitTests\obj\Debug\ISC.UnitTests.pdb
