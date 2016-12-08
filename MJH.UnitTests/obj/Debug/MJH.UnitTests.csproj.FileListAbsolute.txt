@@ -14,3 +14,5 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\nunit
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Debug\MJH.UnitTests.csprojResolveAssemblyReference.cache
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Debug\MJH.UnitTests.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Debug\MJH.UnitTests.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.Logger.pdb
