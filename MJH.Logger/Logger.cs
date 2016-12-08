@@ -20,39 +20,66 @@ namespace MJH
 
         public void LogError(LogCategory logCategory, Exception exception)
         {
+            if (!SetLoggingLevel().Error)
+            {
+                return;
+            }
+
             SetupLogLocation();
-
-            var loggingEnabled = new LoggingLevelEnabled().Decide(LoggingLevel);
-
             _loggingFile.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogInfo(LogCategory logCategory, Exception exception)
         {
+            if (!SetLoggingLevel().Info)
+            {
+                return;
+            }
+
             SetupLogLocation();
             _loggingFile.Write("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogDebug(LogCategory logCategory, Exception exception)
         {
+            if (!SetLoggingLevel().Debug)
+            {
+                return;
+            }
+
             SetupLogLocation();
             _loggingFile.Write("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogError(LogCategory logCategory, string message)
         {
+            if (!SetLoggingLevel().Error)
+            {
+                return;
+            }
+
             SetupLogLocation();
             _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
         }
 
         public void LogInfo(LogCategory logCategory, string message)
         {
+            if (!SetLoggingLevel().Info)
+            {
+                return;
+            }
+
             SetupLogLocation();
             _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
         }
 
         public void LogDebug(LogCategory logCategory, string message)
         {
+            if (!SetLoggingLevel().Debug)
+            {
+                return;
+            }
+
             SetupLogLocation();
             _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
         }
@@ -66,6 +93,11 @@ namespace MJH
             {
                 _loggingFile.Create();
             }
+        }
+
+        private LoggingLevelModel SetLoggingLevel()
+        {
+            return new LoggingLevelEnabled().Decide(LoggingLevel);
         }
     }
 }
