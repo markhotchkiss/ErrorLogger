@@ -1,9 +1,0 @@
-D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger45\bin\Debug\MJH.Logger.dll
-D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger45\bin\Debug\MJH.Logger.pdb
-D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger45\obj\Debug\MJH.Logger.dll
-D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.Logger45\obj\Debug\MJH.Logger.pdb
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger45\bin\Debug\MJH.Logger.dll
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger45\bin\Debug\MJH.Logger.pdb
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger45\obj\Debug\MJH.Logger45.csprojResolveAssemblyReference.cache
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger45\obj\Debug\MJH.Logger.dll
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger45\obj\Debug\MJH.Logger.pdb
