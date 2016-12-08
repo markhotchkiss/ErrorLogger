@@ -1,0 +1,9 @@
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\MJH.UnitTests.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\MJH.UnitTests.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\nunit.framework.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net461\nunit.framework.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Release-Net461\MJH.UnitTests.csprojResolveAssemblyReference.cache
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Release-Net461\MJH.UnitTests.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Release-Net461\MJH.UnitTests.pdb

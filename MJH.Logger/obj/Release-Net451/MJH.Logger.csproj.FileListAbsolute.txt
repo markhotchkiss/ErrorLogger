@@ -1,0 +1,4 @@
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release-Net451\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release-Net451\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release-Net451\MJH.Logger.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release-Net451\MJH.Logger.pdb
