@@ -1,5 +1,6 @@
 ﻿using MJH.Classes;
 using MJH.Interfaces;
+using MJH.Models;
 using System;
 
 namespace MJH
@@ -8,7 +9,7 @@ namespace MJH
     {
         public string LogOutputFileLocation { get; set; }
         public string LogOutputFileName { get; set; }
-        public string LoggingLevel { get; set; }
+        public LoggingLevel LoggingLevel { get; set; }
 
         private readonly LoggingFile _loggingFile;
 
@@ -20,6 +21,9 @@ namespace MJH
         public void LogError(LogCategory logCategory, Exception exception)
         {
             SetupLogLocation();
+
+            var loggingEnabled = new LoggingLevelEnabled().Decide(LoggingLevel);
+
             _loggingFile.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
@@ -33,6 +37,24 @@ namespace MJH
         {
             SetupLogLocation();
             _loggingFile.Write("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
+        }
+
+        public void LogError(LogCategory logCategory, string message)
+        {
+            SetupLogLocation();
+            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
+        }
+
+        public void LogInfo(LogCategory logCategory, string message)
+        {
+            SetupLogLocation();
+            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
+        }
+
+        public void LogDebug(LogCategory logCategory, string message)
+        {
+            SetupLogLocation();
+            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
         }
 
         private void SetupLogLocation()

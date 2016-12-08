@@ -9,9 +9,7 @@ D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.UnitTests\obj\Debug\MJH.
 D:\SourceCode\VS2015\Projects\Personal\Error Logger\MJH.UnitTests\obj\Debug\MJH.UnitTests.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.UnitTests.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.UnitTests.pdb
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.Logger.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\nunit.framework.dll
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\MJH.Logger.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\nunit.framework.xml
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Debug\MJH.UnitTests.csprojResolveAssemblyReference.cache
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\obj\Debug\MJH.UnitTests.dll

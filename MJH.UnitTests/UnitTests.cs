@@ -1,7 +1,8 @@
-﻿using NUnit.Framework;
+﻿using MJH.Interfaces;
+using MJH.Models;
+using NUnit.Framework;
 using System;
 using System.IO;
-using MJH.Interfaces;
 
 namespace MJH.UnitTests
 {
@@ -17,7 +18,7 @@ namespace MJH.UnitTests
             {
                 LogOutputFileLocation = "D:\\Tests\\Logger\\",
                 LogOutputFileName = "Activity.log",
-                LoggingLevel = "DEBUG"
+                LoggingLevel = LoggingLevel.Debug
             };
         }
 
