@@ -12,7 +12,7 @@ namespace MJH.Classes
                     return new LoggingLevelModel
                     {
                         Debug = false,
-                        Error = false,
+                        Error = true,
                         Info = true
                     };
                 case LoggingLevel.Error:
@@ -20,7 +20,7 @@ namespace MJH.Classes
                     {
                         Debug = false,
                         Error = true,
-                        Info = true
+                        Info = false
                     };
                 case LoggingLevel.Debug:
                     return new LoggingLevelModel

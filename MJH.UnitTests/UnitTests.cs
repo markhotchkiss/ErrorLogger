@@ -128,5 +128,25 @@ namespace MJH.UnitTests
                 File.Delete(_logger.LogOutputFileLocation + _logger.LogOutputFileName);
             }
         }
+
+        [Test, Order(5)]
+        public void LogDebugWhenNotAllowed()
+        {
+            try
+            {
+                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
+            }
+            catch (Exception exception)
+            {
+                _logger.LoggingLevel = LoggingLevel.Info;
+                _logger.LogDebug(LogCategory.Process, exception);
+
+                //Check that the log file exists with text inside
+                var fileInfo = new FileInfo(_logger.LogOutputFileLocation + _logger.LogOutputFileName);
+                Assert.False(fileInfo.Exists);
+
+                File.Delete(_logger.LogOutputFileLocation + _logger.LogOutputFileName);
+            }
+        }
     }
 }
