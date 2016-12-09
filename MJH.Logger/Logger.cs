@@ -59,7 +59,7 @@ namespace MJH
             }
 
             SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
+            _loggingFile.Write("ERROR", logCategory, message, DateTime.Now);
         }
 
         public void LogInfo(LogCategory logCategory, string message)
@@ -70,7 +70,7 @@ namespace MJH
             }
 
             SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
+            _loggingFile.Write("INFO", logCategory, message, DateTime.Now);
         }
 
         public void LogDebug(LogCategory logCategory, string message)

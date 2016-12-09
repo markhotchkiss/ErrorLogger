@@ -2,3 +2,4 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release-Net461
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release-Net461\MJH.Logger.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release-Net461\MJH.Logger.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release-Net461\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release-Net461\MJH.Logger.csprojResolveAssemblyReference.cache
