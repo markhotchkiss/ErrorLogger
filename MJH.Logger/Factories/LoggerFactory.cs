@@ -19,6 +19,12 @@ namespace MJH.Factories
                         LoggingLevel = LoggingLevel.Debug
                     };
                     break;
+                case LoggingTypeModel.LogOutputType.SQL:
+                    //TODO add new logger here.
+                    break;
+                case LoggingTypeModel.LogOutputType.SQLite:
+                    //TODO add new logger here.
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(outputType), outputType, null);
             }
