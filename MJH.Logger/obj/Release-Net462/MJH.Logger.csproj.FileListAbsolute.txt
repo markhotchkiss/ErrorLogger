@@ -8,3 +8,4 @@ C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.Logger\obj\Release-Net462\MJH.Logger.
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.Logger\obj\Release-Net462\MJH.Logger.pdb
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.Logger\bin\Release-Net462\MJH.Logger.dll
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.Logger\bin\Release-Net462\MJH.Logger.pdb
+C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.Logger\bin\Release-Net462\MJH.Logger.dll.config

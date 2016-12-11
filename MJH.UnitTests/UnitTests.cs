@@ -9,7 +9,7 @@ namespace MJH.UnitTests
     [TestFixture]
     public class UnitTests
     {
-        private TextLogger _textLogger;
+        private Logger _textLogger;
 
         [OneTimeSetUp]
         public void InitialiseTests()

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MJH.Interfaces;
 using MJH.Models;
 
@@ -16,7 +12,12 @@ namespace MJH.Factories
             switch (outputType)
             {
                 case LoggingTypeModel.LogOutputType.TextFile:
-                    repo = new TextLogger();
+                    repo = new TextLogger
+                    {
+                        LogOutputFileLocation = "C:\\Tests\\Logger",
+                        LogOutputFileName = "ActivityLog.log",
+                        LoggingLevel = LoggingLevel.Debug
+                    };
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(outputType), outputType, null);
