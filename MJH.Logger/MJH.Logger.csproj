@@ -97,7 +97,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release-Net45|AnyCPU'">
     <OutputPath>bin\Release-Net45\</OutputPath>
-	<DebugType>pdbonly</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -166,12 +166,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Archive.cs" />
     <Compile Include="Classes\GenerateError.cs" />
     <Compile Include="Classes\LoggingFile.cs" />
     <Compile Include="Classes\LoggingLevelEnabled.cs" />
-    <Compile Include="Interfaces\LoggerInterface.cs" />
+    <Compile Include="Factories\LoggerFactory.cs" />
+    <Compile Include="Interfaces\IArchive.cs" />
+    <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="TextLogger.cs" />
     <Compile Include="Models\LoggingLevelModel.cs" />
+    <Compile Include="Models\LoggingTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

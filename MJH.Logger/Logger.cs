@@ -1,103 +1,47 @@
-﻿using MJH.Classes;
+﻿using System;
+using MJH.Factories;
 using MJH.Interfaces;
 using MJH.Models;
-using System;
 
 namespace MJH
 {
-    public class Logger : ILogger
+    public class Logger
     {
-        public string LogOutputFileLocation { get; set; }
-        public string LogOutputFileName { get; set; }
-        public LoggingLevel LoggingLevel { get; set; }
+        private readonly ILogger _logger;
 
-        private readonly LoggingFile _loggingFile;
-
-        public Logger()
+        public Logger(LoggingTypeModel.LogOutputType loggerOutputType)
         {
-            _loggingFile = new LoggingFile();
+            _logger = new LoggerFactory().GetLoggerRepository(loggerOutputType);
         }
 
-        public void LogError(LogCategory logCategory, Exception exception)
+        public void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            if (!SetLoggingLevel().Error)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.LogError(logCategory, exception);
         }
 
-        public void LogInfo(LogCategory logCategory, Exception exception)
+        public void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            if (!SetLoggingLevel().Info)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.LogInfo(logCategory, exception);
         }
 
-        public void LogDebug(LogCategory logCategory, Exception exception)
+        public void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            if (!SetLoggingLevel().Debug)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.LogDebug(logCategory, exception);
         }
 
-        public void LogError(LogCategory logCategory, string message)
+        public void LogError(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            if (!SetLoggingLevel().Error)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("ERROR", logCategory, message, DateTime.Now);
+            _logger.LogError(logCategory, message);
         }
 
-        public void LogInfo(LogCategory logCategory, string message)
+        public void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            if (!SetLoggingLevel().Info)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("INFO", logCategory, message, DateTime.Now);
+            _logger.LogInfo(logCategory, message);
         }
 
-        public void LogDebug(LogCategory logCategory, string message)
+        public void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            if (!SetLoggingLevel().Debug)
-            {
-                return;
-            }
-
-            SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
-        }
-
-        private void SetupLogLocation()
-        {
-            _loggingFile.LoggingFileLocation = LogOutputFileLocation;
-            _loggingFile.LoggingFileName = LogOutputFileName;
-
-            if (!_loggingFile.Exists())
-            {
-                _loggingFile.Create();
-            }
-        }
-
-        private LoggingLevelModel SetLoggingLevel()
-        {
-            return new LoggingLevelEnabled().Decide(LoggingLevel);
+            _logger.LogDebug(logCategory, message);
         }
     }
 }

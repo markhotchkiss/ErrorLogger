@@ -1,6 +1,7 @@
 ﻿using MJH.Interfaces;
 using System;
 using System.IO;
+using MJH.Models;
 
 namespace MJH.Classes
 {
@@ -24,7 +25,7 @@ namespace MJH.Classes
             directoryInfo.Create();
         }
 
-        internal void Write(string loggingLevel, LogCategory logCategory, string error, DateTime dateTime)
+        internal void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
             {
