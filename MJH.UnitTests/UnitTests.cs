@@ -1,5 +1,4 @@
-﻿using MJH.Interfaces;
-using MJH.Models;
+﻿using MJH.Models;
 using NUnit.Framework;
 using System;
 using System.IO;
@@ -9,29 +8,18 @@ namespace MJH.UnitTests
     [TestFixture]
     public class UnitTests
     {
-        private Logger _textLogger;
-
         [OneTimeSetUp]
         public void InitialiseTests()
         {
-            _textLogger = new TextLogger
-            {
-                LogOutputFileLocation = "C:\\Tests\\TextLogger\\",
-                LogOutputFileName = "Activity.log",
-                LoggingLevel = LoggingLevel.Debug
-            };
+
         }
 
         [TearDown]
         public void Cleanup()
         {
             //If tests have failed, cleanup residual files.
-            var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
-
-            if (fileInfo.Exists)
-            {
-                File.Delete(fileInfo.FullName);
-            }
+            var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
+            fileInfo.Delete();
         }
 
         [Test, Order(1)]
@@ -43,17 +31,17 @@ namespace MJH.UnitTests
             }
             catch (Exception exception)
             {
-                _textLogger.LogError(LoggingTypeModel.LogCategory.Process, exception);
+                Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
 
                 //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
                 Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var streamReader = new StreamReader(fileInfo.FullName);
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                File.Delete(fileInfo.FullName);
             }
         }
 
@@ -66,20 +54,21 @@ namespace MJH.UnitTests
             }
             catch (Exception exception)
             {
-                _textLogger.LogError(LoggingTypeModel.LogCategory.Process, exception);
+                Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
 
                 //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
+
                 Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var streamReader = new StreamReader(fileInfo.FullName);
                 var errorText = streamReader.ReadToEnd();
                 streamReader.Close();
 
                 Assert.IsNotEmpty(errorText);
                 Assert.That(!errorText.Contains("InnerException"));
 
-                File.Delete(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                File.Delete(fileInfo.FullName);
             }
         }
 
@@ -92,17 +81,17 @@ namespace MJH.UnitTests
             }
             catch (Exception exception)
             {
-                _textLogger.LogInfo(LoggingTypeModel.LogCategory.Process, exception);
+                Logger.LogInfo(LoggingTypeModel.LogCategory.Process, exception);
 
                 //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
                 Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var streamReader = new StreamReader(fileInfo.FullName);
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                File.Delete(fileInfo.FullName);
             }
         }
 
@@ -115,37 +104,17 @@ namespace MJH.UnitTests
             }
             catch (Exception exception)
             {
-                _textLogger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
+                Logger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
 
                 //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
                 Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                var streamReader = new StreamReader(fileInfo.FullName);
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
-            }
-        }
-
-        [Test, Order(5)]
-        public void LogDebugWhenNotAllowed()
-        {
-            try
-            {
-                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-            }
-            catch (Exception exception)
-            {
-                _textLogger.LoggingLevel = LoggingLevel.Info;
-                _textLogger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
-
-                //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
-                Assert.False(fileInfo.Exists);
-
-                File.Delete(_textLogger.LogOutputFileLocation + _textLogger.LogOutputFileName);
+                File.Delete(fileInfo.FullName);
             }
         }
     }

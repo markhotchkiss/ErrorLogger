@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LoggerConfig>
+  <LoggerType>TextFile</LoggerType> <!--TextFile, SQLite, SQL-->
+  <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
+  <Sql>
+    <ServerInformation>
+      <Server></Server>
+      <Database></Database>
+      <Username></Username>
+      <Password></Password>
+    </ServerInformation>
+    <LoggerInformation>
+      <HistoryToKeep>0</HistoryToKeep>
+    </LoggerInformation>
+  </Sql>
+  <SQLite>
+    <ServerInformation>
+      <Server></Server>
+      <Database></Database>
+      <Username></Username>
+      <Password></Password>
+    </ServerInformation>
+    <LoggerInformation>
+      <HistoryToKeep>0</HistoryToKeep>
+    </LoggerInformation>
+  </SQLite>
+  <Text>
+    <FileInformation>
+      <LogFileName>Activity.log</LogFileName>
+      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
+      <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
+    </FileInformation>
+    <LoggerInformation>
+      <FileHistoryToKeep>5</FileHistoryToKeep>
+    </LoggerInformation>
+  </Text>
+</LoggerConfig>

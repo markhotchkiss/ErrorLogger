@@ -3,7 +3,7 @@ using MJH.Interfaces;
 using MJH.Models;
 using System;
 
-namespace MJH
+namespace MJH.Loggers
 {
     public class TextLogger : ILogger
     {

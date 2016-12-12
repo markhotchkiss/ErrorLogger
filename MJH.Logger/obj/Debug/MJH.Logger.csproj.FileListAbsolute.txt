@@ -6,3 +6,6 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\MJH.Logg
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\MJH.Logger.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Debug\MJH.Logger.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Debug\MJH.Logger.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\LoggerConfig.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\MJH.Logger.dll.config
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Debug\MJH.Logger.csprojResolveAssemblyReference.cache

@@ -170,17 +170,24 @@
     <Compile Include="Classes\GenerateError.cs" />
     <Compile Include="Classes\LoggingFile.cs" />
     <Compile Include="Classes\LoggingLevelEnabled.cs" />
+    <Compile Include="Classes\ReadConfiguration.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Interfaces\IArchive.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Loggers\TextLogger.cs" />
+    <Compile Include="Models\ConfigModel.cs" />
     <Compile Include="Models\LoggingLevelModel.cs" />
     <Compile Include="Models\LoggingTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LoggerConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
