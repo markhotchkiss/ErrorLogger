@@ -80,6 +80,8 @@
     public class LoggerConfigTextLoggerInformation
     {
         public int? FileHistoryToKeep { get; set; }
+
+        public float MaxFileSize { get; set; }
     }
 
 

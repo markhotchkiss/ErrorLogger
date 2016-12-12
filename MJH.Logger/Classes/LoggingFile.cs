@@ -1,7 +1,6 @@
-﻿using MJH.Interfaces;
+﻿using MJH.Models;
 using System;
 using System.IO;
-using MJH.Models;
 
 namespace MJH.Classes
 {
@@ -35,6 +34,15 @@ namespace MJH.Classes
                 streamWriter.Flush();
                 streamWriter.Close();
             }
+        }
+
+        internal float GetSize()
+        {
+            var loggingFile = new FileInfo(LoggingFileLocation + "\\" + LoggingFileName);
+
+            var fileSize = Convert.ToInt32(loggingFile.Length) / 1024f / 1024f;
+
+            return fileSize;
         }
     }
 }

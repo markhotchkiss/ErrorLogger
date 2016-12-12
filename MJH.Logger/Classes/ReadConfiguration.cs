@@ -1,4 +1,5 @@
-﻿using MJH.Models;
+﻿using MJH.Interfaces;
+using MJH.Models;
 using System;
 using System.IO;
 using System.Reflection;
@@ -7,9 +8,9 @@ using System.Xml.Serialization;
 
 namespace MJH.Classes
 {
-    internal class ConfigurationHandler
+    public class ConfigurationHandler : IConfiguration
     {
-        internal LoggerConfig Read()
+        public LoggerConfig Read()
         {
             var serializer = new XmlSerializer(typeof(LoggerConfig));
 
@@ -20,7 +21,7 @@ namespace MJH.Classes
             return config;
         }
 
-        public static string AssemblyDirectory
+        private static string AssemblyDirectory
         {
             get
             {

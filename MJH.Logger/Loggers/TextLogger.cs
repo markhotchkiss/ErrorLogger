@@ -16,6 +16,8 @@ namespace MJH.Loggers
         public TextLogger()
         {
             _loggingFile = new LoggingFile();
+
+            CheckArchive();
         }
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -26,6 +28,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
+
             _loggingFile.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
@@ -98,6 +101,18 @@ namespace MJH.Loggers
         private LoggingLevelModel SetLoggingLevel()
         {
             return new LoggingLevelEnabled().Decide(LoggingLevel);
+        }
+
+        private void CheckArchive()
+        {
+            var archive = new Archive();
+
+            if (!archive.CheckArchiveFolderExists())
+            {
+                archive.CreateArchiveFolder();
+            }
+
+            archive.ArchiveLogFile();
         }
     }
 }
