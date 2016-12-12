@@ -1,30 +1,31 @@
-﻿using MJH.Models;
+﻿using MJH.Interfaces;
+using MJH.Models;
 using System;
 using System.IO;
 
 namespace MJH.Classes
 {
-    internal class LoggingFile
+    internal class LoggingFile : ILoggingWriter
     {
         internal string LoggingFileLocation;
 
         internal string LoggingFileName;
 
-        internal bool Exists()
+        public bool Exists()
         {
             var directoryInfo = new DirectoryInfo(LoggingFileLocation);
 
             return directoryInfo.Exists;
         }
 
-        internal void Create()
+        public void Create()
         {
             var directoryInfo = new DirectoryInfo(LoggingFileLocation);
 
             directoryInfo.Create();
         }
 
-        internal void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
+        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
             {

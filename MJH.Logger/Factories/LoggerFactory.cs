@@ -24,10 +24,10 @@ namespace MJH.Factories
                     };
                     break;
                 case LoggingTypeModel.LogOutputType.SQL:
-                    //TODO add new logger here.
+                    repo = new SqlLogger();
                     break;
                 case LoggingTypeModel.LogOutputType.SQLite:
-                    //TODO add new logger here.
+                    repo = new SqliteLogger();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

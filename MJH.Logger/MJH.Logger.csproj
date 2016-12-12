@@ -166,16 +166,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\Archive.cs" />
-    <Compile Include="Classes\GenerateError.cs" />
-    <Compile Include="Classes\LoggingFile.cs" />
-    <Compile Include="Classes\LoggingLevelEnabled.cs" />
-    <Compile Include="Classes\ReadConfiguration.cs" />
+    <Compile Include="Classes\TextLogger\Archive.cs" />
+    <Compile Include="Classes\Generic\GenerateError.cs" />
+    <Compile Include="Classes\TextLogger\LoggingFile.cs" />
+    <Compile Include="Classes\Generic\LoggingLevelEnabled.cs" />
+    <Compile Include="Classes\Sql\LoggingSql.cs" />
+    <Compile Include="Classes\Sqlite\LoggingSqlite.cs" />
+    <Compile Include="Classes\Configuration\ReadConfiguration.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Interfaces\IArchive.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
+    <Compile Include="Interfaces\ILoggingWriter.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="Loggers\SqliteLogger.cs" />
+    <Compile Include="Loggers\SqlLogger.cs" />
     <Compile Include="Loggers\TextLogger.cs" />
     <Compile Include="Models\ConfigModel.cs" />
     <Compile Include="Models\LoggingLevelModel.cs" />

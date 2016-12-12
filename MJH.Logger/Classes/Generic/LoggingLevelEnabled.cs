@@ -2,9 +2,9 @@
 
 namespace MJH.Classes
 {
-    public class LoggingLevelEnabled
+    public static class LoggingLevelEnabled
     {
-        public LoggingLevelModel Decide(LoggingLevel loggingLevel)
+        public static LoggingLevelModel Decide(LoggingLevel loggingLevel)
         {
             switch (loggingLevel)
             {
