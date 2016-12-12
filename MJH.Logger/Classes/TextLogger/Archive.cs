@@ -1,11 +1,12 @@
-﻿using MJH.Interfaces;
+﻿using MJH.Classes.Configuration;
+using MJH.Interfaces;
 using MJH.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace MJH.Classes
+namespace MJH.Classes.TextLogger
 {
     public class Archive : IArchive
     {

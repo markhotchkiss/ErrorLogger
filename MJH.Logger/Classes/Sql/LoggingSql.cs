@@ -2,7 +2,7 @@
 using MJH.Models;
 using System;
 
-namespace MJH.Classes
+namespace MJH.Classes.Sql
 {
     internal class LoggingSql : ILoggingWriter
     {

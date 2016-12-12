@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MJH.Classes
+namespace MJH.Classes.Generic
 {
     internal static class GenerateError
     {

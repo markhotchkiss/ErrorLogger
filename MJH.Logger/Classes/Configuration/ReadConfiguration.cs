@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace MJH.Classes
+namespace MJH.Classes.Configuration
 {
     public class ConfigurationHandler : IConfiguration
     {

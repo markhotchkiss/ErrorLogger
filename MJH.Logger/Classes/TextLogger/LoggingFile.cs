@@ -1,9 +1,9 @@
-﻿using MJH.Interfaces;
-using MJH.Models;
-using System;
+﻿using System;
 using System.IO;
+using MJH.Interfaces;
+using MJH.Models;
 
-namespace MJH.Classes
+namespace MJH.Classes.TextLogger
 {
     internal class LoggingFile : ILoggingWriter
     {

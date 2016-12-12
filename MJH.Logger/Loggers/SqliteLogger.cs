@@ -1,4 +1,6 @@
 ﻿using MJH.Classes;
+using MJH.Classes.Generic;
+using MJH.Classes.Sqlite;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
