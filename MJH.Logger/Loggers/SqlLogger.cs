@@ -20,6 +20,8 @@ namespace MJH.Loggers
             {
                 _logger.Create();
             }
+
+            _logger.Purge();
         }
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -81,6 +83,5 @@ namespace MJH.Loggers
 
             _logger.Write("DEBUG", logCategory, message, DateTime.Now);
         }
-
     }
 }
