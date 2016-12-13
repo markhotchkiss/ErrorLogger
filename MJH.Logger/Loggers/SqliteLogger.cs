@@ -1,5 +1,4 @@
-﻿using MJH.Classes;
-using MJH.Classes.Generic;
+﻿using MJH.Classes.Generic;
 using MJH.Classes.Sqlite;
 using MJH.Interfaces;
 using MJH.Models;
@@ -17,6 +16,11 @@ namespace MJH.Loggers
         public SqliteLogger()
         {
             _logger = new LoggingSqlite();
+
+            if (!_logger.Exists())
+            {
+                _logger.Create();
+            }
         }
         public void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {

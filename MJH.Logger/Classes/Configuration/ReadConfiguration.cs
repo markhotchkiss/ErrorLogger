@@ -21,7 +21,7 @@ namespace MJH.Classes.Configuration
             return config;
         }
 
-        private static string AssemblyDirectory
+        internal static string AssemblyDirectory
         {
             get
             {

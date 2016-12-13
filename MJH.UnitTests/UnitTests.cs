@@ -117,5 +117,28 @@ namespace MJH.UnitTests
                 File.Delete(fileInfo.FullName);
             }
         }
+
+        [Test, Order(5)]
+        public void WriteSqliteError()
+        {
+            try
+            {
+                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
+            }
+            catch (Exception exception)
+            {
+                Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
+
+                //Check that the log file exists with text inside
+                var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
+                Assert.True(fileInfo.Exists);
+
+                var streamReader = new StreamReader(fileInfo.FullName);
+                Assert.IsNotEmpty(streamReader.ReadToEnd());
+                streamReader.Close();
+
+                File.Delete(fileInfo.FullName);
+            }
+        }
     }
 }

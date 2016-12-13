@@ -13,7 +13,6 @@ namespace MJH
         {
             var loggerFactory = new LoggerFactory();
             LoggerInterface = loggerFactory.GetLoggerRepository();
-
         }
 
         public static void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)

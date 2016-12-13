@@ -1,7 +1,7 @@
-﻿using System;
-using System.IO;
-using MJH.Interfaces;
+﻿using MJH.Interfaces;
 using MJH.Models;
+using System;
+using System.IO;
 
 namespace MJH.Classes.TextLogger
 {
