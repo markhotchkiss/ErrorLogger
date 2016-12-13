@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace MJH.BusinessLogic.TextLogger
 {
-    public class Archive : IArchive
+    public class Archive : IArchive, ILoggingPurge
     {
         public void ArchiveLogFile()
         {
@@ -95,6 +95,33 @@ namespace MJH.BusinessLogic.TextLogger
             }
 
             return numberList.Max() + 1;
+        }
+
+        public void Purge()
+        {
+            var config = GetConfig();
+
+            var directoryInfo = new DirectoryInfo(config.Text.FileInformation.ArchiveDirectory);
+
+            var listToRemove = new List<string>();
+
+            var fileCount = 0;
+
+            foreach (var file in directoryInfo.EnumerateFiles().OrderBy(d => d.LastWriteTime))
+            {
+                if (fileCount <= config.Text.LoggerInformation.FileHistoryToKeep)
+                {
+                    fileCount++;
+                    continue;
+                }
+
+                listToRemove.Add(file.FullName);
+            }
+
+            foreach (var file in listToRemove)
+            {
+                File.Delete(file);
+            }
         }
     }
 }

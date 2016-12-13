@@ -109,6 +109,8 @@ namespace MJH.Loggers
             }
 
             archive.ArchiveLogFile();
+
+            archive.Purge();
         }
     }
 }

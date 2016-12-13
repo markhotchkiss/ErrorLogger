@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LoggerConfig>
-  <LoggerType>SQL</LoggerType> <!--TextFile, SQLite, SQL-->
+  <LoggerType>TextFile</LoggerType> <!--TextFile, SQLite, SQL-->
   <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
   <Sql>
     <ServerInformation>
@@ -29,7 +29,7 @@
       <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
-      <FileHistoryToKeep>5</FileHistoryToKeep>
+      <FileHistoryToKeep>2</FileHistoryToKeep>
       <MaxFileSize>1</MaxFileSize>
     </LoggerInformation>
   </Text>
