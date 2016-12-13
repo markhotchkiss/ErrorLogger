@@ -15,10 +15,8 @@
   </Sql>
   <SQLite>
     <ServerInformation>
-      <Server></Server>
-      <Database></Database>
-      <Username></Username>
-      <Password></Password>
+      <LogFileName>Activity.db</LogFileName>
+      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep>

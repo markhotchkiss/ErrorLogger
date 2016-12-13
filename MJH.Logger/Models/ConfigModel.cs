@@ -47,13 +47,9 @@
 
     public class LoggerConfigSQLiteServerInformation
     {
-        public string Server { get; set; }
+        public string LogFileName { get; set; }
 
-        public string Database { get; set; }
-
-        public string Username { get; set; }
-
-        public string Password { get; set; }
+        public string LogFileLocation { get; set; }
     }
 
     public class LoggerConfigSQLiteLoggerInformation

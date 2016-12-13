@@ -8,7 +8,6 @@ namespace MJH.Loggers
 {
     public class SqliteLogger : ILogger
     {
-        public string LogOutputFileLocation { get; set; }
         public LoggingLevel LoggingLevel { get; set; }
 
         private readonly LoggingSqlite _logger;

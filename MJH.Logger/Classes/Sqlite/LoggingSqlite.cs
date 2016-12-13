@@ -9,12 +9,20 @@ namespace MJH.Classes.Sqlite
 {
     internal class LoggingSqlite : ILoggingWriter
     {
-        private SQLiteConnection _dbConnection;
+        private readonly string _dbName;
+        private readonly string _dbLocation;
+
+        private readonly SQLiteConnection _dbConnection;
         private readonly string _databasePassword = string.Empty;
 
         public LoggingSqlite()
         {
-            _dbConnection = new SQLiteConnection($"Data Source={ConfigurationHandler.AssemblyDirectory + "\\ErrorLog.db"};Version=3;Password={_databasePassword};");
+            var config = new ConfigurationHandler().Read();
+
+            _dbName = config.SQLite.ServerInformation.LogFileName;
+            _dbLocation = config.SQLite.ServerInformation.LogFileLocation;
+
+            _dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};");
         }
 
         public bool Exists()
@@ -28,7 +36,7 @@ namespace MJH.Classes.Sqlite
         public void Create()
         {
             //Create a new DB with required tables.
-            SQLiteConnection.CreateFile(ConfigurationHandler.AssemblyDirectory + "\\ErrorLog.db");
+            SQLiteConnection.CreateFile(_dbLocation + "\\" + _dbName);
             CreateErrorTable();
         }
 
