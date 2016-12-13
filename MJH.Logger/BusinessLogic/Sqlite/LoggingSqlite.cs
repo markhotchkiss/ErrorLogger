@@ -7,7 +7,7 @@ using System.IO;
 
 namespace MJH.BusinessLogic.Sqlite
 {
-    internal class LoggingSqlite : ILoggingWriter
+    internal class LoggingSqlite : ILoggingWriter, ILoggingPurge
     {
         private readonly string _dbName;
         private readonly string _dbLocation;
@@ -15,12 +15,14 @@ namespace MJH.BusinessLogic.Sqlite
         private readonly SQLiteConnection _dbConnection;
         private readonly string _databasePassword = string.Empty;
 
+        private readonly LoggerConfig _config;
+
         public LoggingSqlite()
         {
-            var config = new ConfigurationHandler().Read();
+            _config = new ConfigurationHandler().Read();
 
-            _dbName = config.SQLite.ServerInformation.LogFileName;
-            _dbLocation = config.SQLite.ServerInformation.LogFileLocation;
+            _dbName = _config.SQLite.ServerInformation.LogFileName;
+            _dbLocation = _config.SQLite.ServerInformation.LogFileLocation;
 
             _dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};");
         }
@@ -61,6 +63,16 @@ namespace MJH.BusinessLogic.Sqlite
         public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             ExecuteSqLiteNonQuery($"INSERT INTO Error VALUES(NULL,'{loggingLevel}','{logCategory}','{error}','{dateTime:yyyy-MM-dd HH:mm:ss}')");
+        }
+
+        public void Purge()
+        {
+            if (_config.SQLite.LoggerInformation.HistoryToKeep == 0)
+            {
+                return;
+            }
+
+            ExecuteSqLiteNonQuery($"DELETE FROM Error WHERE DateTimeUTC < GETDATE()-{_config.SQLite.LoggerInformation.HistoryToKeep}");
         }
     }
 }
