@@ -1,5 +1,5 @@
-﻿using MJH.Classes.Generic;
-using MJH.Classes.Sqlite;
+﻿using MJH.BusinessLogic.Generic;
+using MJH.BusinessLogic.Sqlite;
 using MJH.Interfaces;
 using MJH.Models;
 using System;

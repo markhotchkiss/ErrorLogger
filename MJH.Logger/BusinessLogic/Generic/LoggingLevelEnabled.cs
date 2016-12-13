@@ -1,6 +1,6 @@
 ﻿using MJH.Models;
 
-namespace MJH.Classes.Generic
+namespace MJH.BusinessLogic.Generic
 {
     public static class LoggingLevelEnabled
     {

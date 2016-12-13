@@ -190,13 +190,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\TextLogger\Archive.cs" />
-    <Compile Include="Classes\Generic\GenerateError.cs" />
-    <Compile Include="Classes\TextLogger\LoggingFile.cs" />
-    <Compile Include="Classes\Generic\LoggingLevelEnabled.cs" />
-    <Compile Include="Classes\Sql\LoggingSql.cs" />
-    <Compile Include="Classes\Sqlite\LoggingSqlite.cs" />
-    <Compile Include="Classes\Configuration\ReadConfiguration.cs" />
+    <Compile Include="BusinessLogic\TextLogger\Archive.cs" />
+    <Compile Include="BusinessLogic\Generic\GenerateError.cs" />
+    <Compile Include="BusinessLogic\TextLogger\LoggingFile.cs" />
+    <Compile Include="BusinessLogic\Generic\LoggingLevelEnabled.cs" />
+    <Compile Include="BusinessLogic\Sql\LoggingSql.cs" />
+    <Compile Include="BusinessLogic\Sqlite\LoggingSqlite.cs" />
+    <Compile Include="BusinessLogic\Configuration\ReadConfiguration.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Interfaces\IArchive.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
@@ -219,6 +219,9 @@
     <Content Include="LoggerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.103\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.103\build\net46\System.Data.SQLite.Core.targets')" />

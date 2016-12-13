@@ -1,4 +1,4 @@
-﻿using MJH.Classes.Configuration;
+﻿using MJH.BusinessLogic.Configuration;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace MJH.Classes.TextLogger
+namespace MJH.BusinessLogic.TextLogger
 {
     public class Archive : IArchive
     {

@@ -1,11 +1,11 @@
-﻿using MJH.Classes.Configuration;
+﻿using MJH.BusinessLogic.Configuration;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
 using System.Data.SQLite;
 using System.IO;
 
-namespace MJH.Classes.Sqlite
+namespace MJH.BusinessLogic.Sqlite
 {
     internal class LoggingSqlite : ILoggingWriter
     {
@@ -43,7 +43,7 @@ namespace MJH.Classes.Sqlite
         private void CreateErrorTable()
         {
             const string createCommand =
-                "CREATE TABLE Error (Id INTEGER PRIMARY KEY AUTOINCREMENT, LoggingLevel nvarchar(10), ErrorType nvarchar(200), Message nvarchar(1000), DateTimeUTC DateTime)";
+                "CREATE TABLE Error (Id INTEGER PRIMARY KEY AUTOINCREMENT, LoggingLevel nvarchar(10), ErrorType nvarchar(200), Message nvarchar(4000), DateTimeUTC DateTime)";
             ExecuteSqLiteNonQuery(createCommand);
         }
 

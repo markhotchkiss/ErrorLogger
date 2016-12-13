@@ -3,7 +3,7 @@ using MJH.Models;
 using System;
 using System.IO;
 
-namespace MJH.Classes.TextLogger
+namespace MJH.BusinessLogic.TextLogger
 {
     internal class LoggingFile : ILoggingWriter
     {

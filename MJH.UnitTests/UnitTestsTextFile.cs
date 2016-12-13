@@ -1,4 +1,4 @@
-﻿using MJH.Classes.Configuration;
+﻿using MJH.BusinessLogic.Configuration;
 using MJH.Models;
 using NUnit.Framework;
 using System;

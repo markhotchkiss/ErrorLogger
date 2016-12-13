@@ -1,4 +1,4 @@
-﻿using MJH.Classes.Configuration;
+﻿using MJH.BusinessLogic.Configuration;
 using MJH.Interfaces;
 using MJH.Loggers;
 using MJH.Models;

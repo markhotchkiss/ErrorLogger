@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MJH.Classes.Generic
+namespace MJH.BusinessLogic.Generic
 {
     internal static class GenerateError
     {
