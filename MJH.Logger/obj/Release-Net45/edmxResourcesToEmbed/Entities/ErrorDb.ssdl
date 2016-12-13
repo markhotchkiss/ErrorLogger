@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ErrorLoggerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Error">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoggingLevel" Type="nvarchar" MaxLength="10" />
+    <Property Name="ErrorType" Type="nvarchar" MaxLength="200" />
+    <Property Name="Message" Type="nvarchar" MaxLength="4000" />
+    <Property Name="DateTimeUTC" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="ErrorLoggerModelStoreContainer">
+    <EntitySet Name="Error" EntityType="Self.Error" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

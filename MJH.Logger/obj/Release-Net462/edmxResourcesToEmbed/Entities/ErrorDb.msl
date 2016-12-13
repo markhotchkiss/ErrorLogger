@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ErrorLoggerModelStoreContainer" CdmEntityContainer="ErrorLoggerEntities">
+    <EntitySetMapping Name="Errors">
+      <EntityTypeMapping TypeName="ErrorLoggerModel.Error">
+        <MappingFragment StoreEntitySet="Error">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LoggingLevel" ColumnName="LoggingLevel" />
+          <ScalarProperty Name="ErrorType" ColumnName="ErrorType" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="DateTimeUTC" ColumnName="DateTimeUTC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

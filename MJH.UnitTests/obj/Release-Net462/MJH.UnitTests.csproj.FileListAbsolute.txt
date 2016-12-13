@@ -16,3 +16,13 @@ C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.UnitTests\bin\Release-Net462\nunit.fr
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.UnitTests\obj\Release-Net462\MJH.UnitTests.csprojResolveAssemblyReference.cache
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.UnitTests\obj\Release-Net462\MJH.UnitTests.dll
 C:\SourceCode\VS2015\Repos\ErrorLogger\MJH.UnitTests\obj\Release-Net462\MJH.UnitTests.pdb
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\LoggerConfig.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\MJH.UnitTests.dll.config
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\EntityFramework.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\EntityFramework.SqlServer.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\System.Data.SQLite.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\System.Data.SQLite.EF6.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\System.Data.SQLite.Linq.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\EntityFramework.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\EntityFramework.SqlServer.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Release-Net462\System.Data.SQLite.xml

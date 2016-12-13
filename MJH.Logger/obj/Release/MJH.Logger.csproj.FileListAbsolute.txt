@@ -3,5 +3,13 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\MJH.Lo
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\MJH.Logger.dll.config
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\LoggerConfig.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.SqlServer.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.EF6.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.Linq.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.SqlServer.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache

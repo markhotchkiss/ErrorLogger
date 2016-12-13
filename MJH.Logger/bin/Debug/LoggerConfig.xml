@@ -10,7 +10,7 @@
       <Password>5chne1deR</Password>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep>365</HistoryToKeep>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
     </LoggerInformation>
   </Sql>
   <SQLite>
@@ -19,7 +19,7 @@
       <LogFileLocation>D:\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep>0</HistoryToKeep>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
     </LoggerInformation>
   </SQLite>
   <Text>
@@ -29,7 +29,7 @@
       <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
-      <FileHistoryToKeep>2</FileHistoryToKeep>
+      <FileHistoryToKeep>2</FileHistoryToKeep> <!--Use 0 for no truncation-->
       <MaxFileSize>1</MaxFileSize>
     </LoggerInformation>
   </Text>

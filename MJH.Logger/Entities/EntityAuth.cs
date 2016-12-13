@@ -2,7 +2,7 @@
 
 namespace MJH.Entities
 {
-    public partial class ErrorLoggerEntities : DbContext
+    public partial class ErrorLoggerEntities
     {
         public ErrorLoggerEntities(string connectionString)
             : base(connectionString)

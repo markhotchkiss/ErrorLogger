@@ -1,27 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <LoggerConfig>
   <LoggerType>TextFile</LoggerType> <!--TextFile, SQLite, SQL-->
-  <LoggingLevel>DEBUG</LoggingLevel> <!--DEBUG, INFO, ERROR-->
+  <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
   <Sql>
     <ServerInformation>
-      <Server></Server>
-      <Database></Database>
-      <Username></Username>
-      <Password></Password>
+      <Server>(local)\MSSQL2012</Server>
+      <Database>ErrorLogger</Database>
+      <Username>sa</Username>
+      <Password>5chne1deR</Password>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep></HistoryToKeep>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
     </LoggerInformation>
   </Sql>
   <SQLite>
     <ServerInformation>
-      <Server></Server>
-      <Database></Database>
-      <Username></Username>
-      <Password></Password>
+      <LogFileName>Activity.db</LogFileName>
+      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep></HistoryToKeep>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
     </LoggerInformation>
   </SQLite>
   <Text>
@@ -31,7 +29,8 @@
       <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
-      <FileHistoryToKeep>5</FileHistoryToKeep>
+      <FileHistoryToKeep>2</FileHistoryToKeep> <!--Use 0 for no truncation-->
+      <MaxFileSize>1</MaxFileSize>
     </LoggerInformation>
   </Text>
 </LoggerConfig>
