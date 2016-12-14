@@ -16,6 +16,10 @@ namespace MJH.UnitTests
         {
             _config = new ConfigurationHandler().Read();
 
+            _config.LoggerType = LoggingTypeModel.LogOutputType.SQLite;
+
+            new ConfigurationHandler().Write(_config);
+
             if (_config.LoggerType != LoggingTypeModel.LogOutputType.SQLite)
             {
                 throw new Exception("Set the logger type to SQLite in the Config file before running these tests.");
