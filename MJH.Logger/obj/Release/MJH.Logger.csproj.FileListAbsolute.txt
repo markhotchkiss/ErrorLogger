@@ -12,6 +12,6 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\Entity
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.xml
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.pdb
-D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\CsvHelper.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\CsvHelper.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache

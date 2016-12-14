@@ -23,6 +23,7 @@ namespace MJH.BusinessLogic.TextLogger
                                                      _config.Text.FileInformation.LogFileName));
 
             csv.Configuration.QuoteAllFields = true;
+            csv.Configuration.HasHeaderRecord = true;
 
             var errorLog = csv.GetRecords<Error>();
 
