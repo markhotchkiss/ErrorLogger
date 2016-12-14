@@ -1,10 +1,9 @@
-﻿using MJH.BusinessLogic.Configuration;
+﻿using CsvHelper;
+using MJH.BusinessLogic.Configuration;
 using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
-using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 
 namespace MJH.BusinessLogic.TextLogger
@@ -20,36 +19,27 @@ namespace MJH.BusinessLogic.TextLogger
 
         public IReadOnlyCollection<Error> Read()
         {
-            var streamReader =
-                new StreamReader(_config.Text.FileInformation.LogFileLocation + "\\" +
-                                 _config.Text.FileInformation.LogFileName);
+            var csv = new CsvReader(new StreamReader(_config.Text.FileInformation.LogFileLocation + "\\" +
+                                                     _config.Text.FileInformation.LogFileName));
 
-            string line;
-            var counter = 0;
+            csv.Configuration.QuoteAllFields = true;
+
+            var errorLog = csv.GetRecords<Error>();
+
             var logFile = new List<Error>();
 
-            while ((line = streamReader.ReadLine()) != null)
+            foreach (var error in errorLog)
             {
-                var splitLine = line.Split(',');
-
-                DateTime dateTime;
-                DateTime.TryParseExact(splitLine[3], "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None,
-                    out dateTime);
-
                 var log = new Error
                 {
-                    LoggingLevel = splitLine[0],
-                    ErrorType = splitLine[1],
-                    Message = splitLine[2],
-                    DateTimeUTC = dateTime
+                    LoggingLevel = error.LoggingLevel,
+                    ErrorType = error.ErrorType,
+                    Message = error.Message,
+                    DateTimeUTC = error.DateTimeUTC
                 };
 
                 logFile.Add(log);
-
-                counter++;
             }
-
-            streamReader.Close();
 
             return logFile;
         }

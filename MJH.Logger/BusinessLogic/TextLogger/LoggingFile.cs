@@ -27,9 +27,23 @@ namespace MJH.BusinessLogic.TextLogger
 
         public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
+            var log = new FileInfo(LoggingFileLocation + "\\" + LoggingFileName);
+
+            if (!log.Exists)
+            {
+                using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
+                {
+                    var textToWrite = $"\"Id\",\"LoggingLevel\",\"ErrorType\",\"Message\",\"DateTimeUTC\"";
+
+                    streamWriter.WriteLine(textToWrite);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+            }
+
             using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
             {
-                var textToWrite = $"{ loggingLevel },{logCategory},{error},{dateTime}";
+                var textToWrite = $"\"0\",\"{ loggingLevel }\",\"{logCategory}\",\"{error}\",\"{dateTime}\"";
 
                 streamWriter.WriteLine(textToWrite);
                 streamWriter.Flush();

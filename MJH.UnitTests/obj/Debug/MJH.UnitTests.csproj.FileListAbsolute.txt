@@ -26,3 +26,5 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\Syste
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\System.Data.SQLite.Linq.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\EntityFramework.xml
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\EntityFramework.SqlServer.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\CsvHelper.dll
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.UnitTests\bin\Debug\CsvHelper.xml

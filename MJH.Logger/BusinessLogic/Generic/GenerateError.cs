@@ -7,8 +7,8 @@ namespace MJH.BusinessLogic.Generic
         internal static string GetException(Exception exception)
         {
             return exception.InnerException != null ?
-                $"Exception: {exception.Message.Replace(',', ' ')} - InnerException {exception.InnerException.ToString().Replace(',', ' ')}" : 
-                $"Exception: {exception.Message.Replace(',', ' ')}";
+                $"Exception: {exception.Message} - InnerException {exception.InnerException}" : 
+                $"Exception: {exception.Message}";
         }
     }
 }
