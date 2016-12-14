@@ -29,7 +29,7 @@ namespace MJH.BusinessLogic.TextLogger
         {
             using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
             {
-                var textToWrite = $"{ loggingLevel } : {logCategory} : {dateTime} : {error}";
+                var textToWrite = $"{ loggingLevel },{logCategory},{error},{dateTime}";
 
                 streamWriter.WriteLine(textToWrite);
                 streamWriter.Flush();

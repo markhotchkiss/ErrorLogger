@@ -1,8 +1,10 @@
 ﻿using MJH.BusinessLogic.Generic;
 using MJH.BusinessLogic.Sqlite;
+using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
+using System.Collections.Generic;
 
 namespace MJH.Loggers
 {
@@ -79,6 +81,11 @@ namespace MJH.Loggers
             }
 
             _logger.Write("DEBUG", logCategory, message, DateTime.Now);
+        }
+
+        public IReadOnlyCollection<Error> ReadLog()
+        {
+            throw new NotImplementedException();
         }
     }
 }

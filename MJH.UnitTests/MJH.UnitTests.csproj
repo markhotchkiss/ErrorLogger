@@ -144,6 +144,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="UnitTestsConfiguration.cs" />
     <Compile Include="UnitTestsSql.cs" />
     <Compile Include="UnitTestsSqlite.cs" />
     <Compile Include="UnitTestsTextFile.cs" />

@@ -30,7 +30,7 @@ namespace MJH.BusinessLogic.Sqlite
         public bool Exists()
         {
             //Check that the DB Exists.
-            var dbFile = new FileInfo(ConfigurationHandler.AssemblyDirectory + "\\ErrorLog.db");
+            var dbFile = new FileInfo(_dbLocation + "\\" + _dbName);
 
             return dbFile.Exists;
         }

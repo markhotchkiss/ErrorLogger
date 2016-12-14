@@ -26,8 +26,8 @@ namespace MJH.UnitTests
         public void Cleanup()
         {
             //If tests have failed, cleanup residual files.
-            var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
-            fileInfo.Delete();
+            //var fileInfo = new FileInfo("D:\\Tests\\Logger\\Activity.log");
+            //fileInfo.Delete();
         }
 
         [Test, Order(1)]
@@ -51,7 +51,7 @@ namespace MJH.UnitTests
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(fileInfo.FullName);
+                //File.Delete(fileInfo.FullName);
             }
         }
 
@@ -80,7 +80,7 @@ namespace MJH.UnitTests
                 Assert.IsNotEmpty(errorText);
                 Assert.That(!errorText.Contains("InnerException"));
 
-                File.Delete(fileInfo.FullName);
+                //File.Delete(fileInfo.FullName);
             }
         }
 
@@ -105,7 +105,7 @@ namespace MJH.UnitTests
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(fileInfo.FullName);
+                //File.Delete(fileInfo.FullName);
             }
         }
 
@@ -130,8 +130,16 @@ namespace MJH.UnitTests
                 Assert.IsNotEmpty(streamReader.ReadToEnd());
                 streamReader.Close();
 
-                File.Delete(fileInfo.FullName);
+                //File.Delete(fileInfo.FullName);
             }
+        }
+
+        [Test, Order(5)]
+        public void Read()
+        {
+            var log = Logger.Read();
+            Assert.IsNotNull(log);
+            Assert.That(log.Count > 0);
         }
     }
 }

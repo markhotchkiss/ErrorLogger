@@ -1,12 +1,14 @@
 ﻿using MJH.BusinessLogic.Generic;
 using MJH.BusinessLogic.TextLogger;
+using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
+using System.Collections.Generic;
 
 namespace MJH.Loggers
 {
-    public class TextLogger : ILogger
+    public class TextLogger : ILogger, ILogReader
     {
         public string LogOutputFileLocation { get; set; }
         public string LogOutputFileName { get; set; }
@@ -111,6 +113,12 @@ namespace MJH.Loggers
             archive.ArchiveLogFile();
 
             archive.Purge();
+        }
+
+        public IReadOnlyCollection<Error> Read()
+        {
+            var logReader = new TextFileReader();
+            return logReader.Read();
         }
     }
 }

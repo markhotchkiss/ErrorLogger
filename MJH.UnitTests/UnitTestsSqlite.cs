@@ -81,5 +81,12 @@ namespace MJH.UnitTests
             var fileInfo = new FileInfo(_config.SQLite.ServerInformation.LogFileLocation + "\\" + _config.SQLite.ServerInformation.LogFileName);
             Assert.True(fileInfo.Exists);
         }
+
+        [Test, Order(4)]
+        public void Read()
+        {
+            var log = Logger.Read();
+            Assert.IsNotNull(log);
+        }
     }
 }

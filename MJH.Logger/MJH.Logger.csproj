@@ -192,13 +192,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Sqlite\SqliteReader.cs" />
+    <Compile Include="BusinessLogic\Sql\SqlReader.cs" />
+    <Compile Include="BusinessLogic\TextLogger\TextFileReader.cs" />
     <Compile Include="BusinessLogic\TextLogger\Archive.cs" />
     <Compile Include="BusinessLogic\Generic\GenerateError.cs" />
     <Compile Include="BusinessLogic\TextLogger\LoggingFile.cs" />
     <Compile Include="BusinessLogic\Generic\LoggingLevelEnabled.cs" />
     <Compile Include="BusinessLogic\Sql\LoggingSql.cs" />
     <Compile Include="BusinessLogic\Sqlite\LoggingSqlite.cs" />
-    <Compile Include="BusinessLogic\Configuration\ReadConfiguration.cs" />
+    <Compile Include="BusinessLogic\Configuration\ConfigurationHandler.cs" />
     <Compile Include="Entities\EntityAuth.cs" />
     <Compile Include="Entities\Error.cs">
       <DependentUpon>ErrorDb.tt</DependentUpon>
@@ -220,11 +223,14 @@
     </Compile>
     <Compile Include="Entities\SqlConnectionBuilder.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
+    <Compile Include="Factories\LogReaderFactory.cs" />
     <Compile Include="Interfaces\IArchive.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
+    <Compile Include="Interfaces\IConfigurationV2.cs" />
     <Compile Include="Interfaces\ILogger.cs" />
     <Compile Include="Interfaces\ILoggingPurge.cs" />
     <Compile Include="Interfaces\ILoggingWriter.cs" />
+    <Compile Include="Interfaces\ILogReader.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Loggers\SqliteLogger.cs" />
     <Compile Include="Loggers\SqlLogger.cs" />
