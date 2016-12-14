@@ -39,7 +39,7 @@ namespace MJH.UnitTests
         {
             try
             {
-                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
+                throw new Exception("ErrorLogger", new Exception("This is my inner exception, and it contains a comma!"));
             }
             catch (Exception exception)
             {

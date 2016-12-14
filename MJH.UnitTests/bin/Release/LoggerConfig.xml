@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<LoggerConfig>
+  <LoggerType>SQLite</LoggerType> <!--TextFile, SQLite, SQL-->
+  <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
+  <Sql>
+    <ServerInformation>
+      <Server>(local)\MSSQL2012</Server>
+      <Database>ErrorLogger</Database>
+      <Username>sa</Username>
+      <Password>5chne1deR</Password>
+    </ServerInformation>
+    <LoggerInformation>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
+    </LoggerInformation>
+  </Sql>
+  <SQLite>
+    <ServerInformation>
+      <LogFileName>Activity.db</LogFileName>
+      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
+    </ServerInformation>
+    <LoggerInformation>
+      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
+    </LoggerInformation>
+  </SQLite>
+  <Text>
+    <FileInformation>
+      <LogFileName>Activity.log</LogFileName>
+      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
+      <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
+    </FileInformation>
+    <LoggerInformation>
+      <FileHistoryToKeep>2</FileHistoryToKeep> <!--Use 0 for no truncation-->
+      <MaxFileSize>1</MaxFileSize>
+    </LoggerInformation>
+  </Text>
+</LoggerConfig>
