@@ -8,11 +8,18 @@ namespace MJH.Factories
 {
     internal class LoggerFactory
     {
-        private readonly LoggerConfig _config = new ConfigurationHandler().Read();
+        private LoggerConfig _config;
+
+        public LoggerFactory()
+        {
+            _config = new ConfigurationHandler().Read();
+        }
 
         internal ILogger GetLoggerRepository()
         {
-            ILogger repo = null;
+            _config = new ConfigurationHandler().Read();
+
+            ILogger repo;
             switch (_config.LoggerType)
             {
                 case LoggingTypeModel.LogOutputType.TextFile:

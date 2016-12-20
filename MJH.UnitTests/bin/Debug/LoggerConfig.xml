@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LoggerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <LoggerType>TextFile</LoggerType>
+  <LoggerType>SQLite</LoggerType>
   <LoggingLevel>Debug</LoggingLevel>
   <Sql>
     <ServerInformation>
