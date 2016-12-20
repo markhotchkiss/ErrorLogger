@@ -3,6 +3,7 @@ using MJH.BusinessLogic.Configuration;
 using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace MJH.BusinessLogic.TextLogger
                 LoggingLevel = error.LoggingLevel,
                 ErrorType = error.ErrorType,
                 Message = error.Message,
-                DateTimeUTC = error.DateTimeUTC
+                DateTimeUTC = Convert.ToDateTime(error.DateTimeUTC)
             }).ToList();
 
             fs.Close();
