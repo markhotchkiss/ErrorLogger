@@ -94,6 +94,11 @@ namespace MJH.BusinessLogic.TextLogger
                 numberList.Add(number);
             }
 
+            if (!numberList.Any())
+            {
+                return 1;
+            }
+
             return numberList.Max() + 1;
         }
 

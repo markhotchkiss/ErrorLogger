@@ -14,3 +14,4 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Lo
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.pdb
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\CsvHelper.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Release\CsvHelper.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache

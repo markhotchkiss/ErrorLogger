@@ -19,12 +19,12 @@ namespace MJH.Loggers
         public TextLogger()
         {
             _loggingFile = new LoggingFile();
-
-            CheckArchive();
         }
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Error)
             {
                 return;
@@ -37,6 +37,8 @@ namespace MJH.Loggers
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Info)
             {
                 return;
@@ -48,6 +50,8 @@ namespace MJH.Loggers
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Debug)
             {
                 return;
@@ -59,6 +63,8 @@ namespace MJH.Loggers
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, string message)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Error)
             {
                 return;
@@ -70,6 +76,8 @@ namespace MJH.Loggers
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Info)
             {
                 return;
@@ -81,6 +89,8 @@ namespace MJH.Loggers
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
         {
+            CheckArchive();
+
             if (!LoggingLevelEnabled.Decide(LoggingLevel).Debug)
             {
                 return;
