@@ -103,7 +103,7 @@ In order to allow you to change the config of the ErrorLogger directly from code
 ###Reading the Configuration
 
 ```javascript  
-        public void ReadConfiguration()
+        public void Read()
         {
             var config = new ConfigurationHandler().Read();
             config.LoggingLevel = LoggingLevel.Debug;
@@ -114,9 +114,13 @@ In order to allow you to change the config of the ErrorLogger directly from code
 ###Writing the Configuration
 
 ```javascript  
-        public void ReadConfiguration(LoggerConfig config)
+        public void Write(LoggerConfig config)
         {
             var writer = new ConfigurationHandler().Write(config); //Config from the Read() method above after changes.
         }
 ```
 
+##Other
+Feel free to Fork/Download the project and take a look at the UnitTests.  These will give you a good idea of the accepted usage of all available methods.  If there are any issues/bugs, feel free to log these on GitHub and I will look at them as soon as I can!
+
+Thanks :-)
