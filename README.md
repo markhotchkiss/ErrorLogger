@@ -103,6 +103,8 @@ In order to allow you to change the config of the ErrorLogger directly from code
 ###Reading the Configuration
 
 ```javascript  
+using MJH.BusinessLogic.Configuration;
+
         public void Read()
         {
             var config = new ConfigurationHandler().Read();
@@ -114,6 +116,8 @@ In order to allow you to change the config of the ErrorLogger directly from code
 ###Writing the Configuration
 
 ```javascript  
+using MJH.BusinessLogic.Configuration;
+
         public void Write(LoggerConfig config)
         {
             var writer = new ConfigurationHandler().Write(config); //Config from the Read() method above after changes.
