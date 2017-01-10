@@ -23,37 +23,84 @@ namespace MJH
 
         public static void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            LoggerInterface.LogError(logCategory, exception);
+            try
+            {
+                LoggerInterface.LogError(logCategory, exception);
+            }
+            catch
+            {
+            }
         }
 
         public static void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            LoggerInterface.LogInfo(logCategory, exception);
+            try
+            {
+                LoggerInterface.LogInfo(logCategory, exception);
+            }
+            catch
+            {
+            }
+
         }
 
         public static void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
-            LoggerInterface.LogDebug(logCategory, exception);
+            try
+            {
+                LoggerInterface.LogDebug(logCategory, exception);
+            }
+            catch
+            {
+            }
+
         }
 
         public static void LogError(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            LoggerInterface.LogError(logCategory, message);
+            try
+            {
+                LoggerInterface.LogError(logCategory, message);
+            }
+            catch
+            {
+            }
         }
 
         public static void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            LoggerInterface.LogInfo(logCategory, message);
+            try
+            {
+                LoggerInterface.LogInfo(logCategory, message);
+            }
+            catch
+            {
+            }
+
         }
 
         public static void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
         {
-            LoggerInterface.LogDebug(logCategory, message);
+            try
+            {
+                LoggerInterface.LogDebug(logCategory, message);
+            }
+            catch
+            {
+            }
         }
 
         public static IReadOnlyCollection<Error> Read()
         {
-            return LogReader.Read();
+            try
+            {
+                return LogReader.Read();
+            }
+            catch
+            {
+                return null;
+            }
+
         }
     }
 }

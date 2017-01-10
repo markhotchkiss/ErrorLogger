@@ -114,7 +114,7 @@ namespace MJH.BusinessLogic.TextLogger
 
             foreach (var file in directoryInfo.EnumerateFiles().OrderBy(d => d.LastWriteTime))
             {
-                if (fileCount <= config.Text.LoggerInformation.FileHistoryToKeep)
+                if (fileCount < config.Text.LoggerInformation.FileHistoryToKeep)
                 {
                     fileCount++;
                     continue;
