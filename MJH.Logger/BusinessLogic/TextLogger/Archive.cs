@@ -116,11 +116,9 @@ namespace MJH.BusinessLogic.TextLogger
             {
                 if (fileCount < config.Text.LoggerInformation.FileHistoryToKeep)
                 {
+                    listToRemove.Add(file.FullName);
                     fileCount++;
-                    continue;
                 }
-
-                listToRemove.Add(file.FullName);
             }
 
             foreach (var file in listToRemove)
