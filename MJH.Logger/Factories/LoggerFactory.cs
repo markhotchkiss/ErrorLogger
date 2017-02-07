@@ -31,10 +31,16 @@ namespace MJH.Factories
                     };
                     break;
                 case LoggingTypeModel.LogOutputType.SQL:
-                    repo = new SqlLogger();
+                    repo = new SqlLogger()
+                    {
+                        LoggingLevel = _config.LoggingLevel
+                    };
                     break;
                 case LoggingTypeModel.LogOutputType.SQLite:
-                    repo = new SqliteLogger();
+                    repo = new SqliteLogger()
+                    {
+                        LoggingLevel = _config.LoggingLevel
+                    };
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
