@@ -1,4 +1,5 @@
 ﻿using MJH.BusinessLogic.Configuration;
+using MJH.BusinessLogic.TextLogger;
 using MJH.Models;
 using NUnit.Framework;
 using System;
@@ -144,6 +145,13 @@ namespace MJH.UnitTests
             var log = Logger.Read();
             Assert.IsNotNull(log);
             Assert.That(log.Count > 0);
+        }
+
+        [Test, Order(6)]
+        public void PurgeArchive()
+        {
+            var logger = new Archive();
+            logger.Purge();
         }
     }
 }

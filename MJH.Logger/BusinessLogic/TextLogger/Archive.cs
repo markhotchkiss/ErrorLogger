@@ -110,14 +110,19 @@ namespace MJH.BusinessLogic.TextLogger
 
             var listToRemove = new List<string>();
 
-            var fileCount = 0;
+            var fileCount = directoryInfo.GetFiles().Length;
+
+            if (fileCount < config.Text.LoggerInformation.FileHistoryToKeep)
+            {
+                return;
+            }
 
             foreach (var file in directoryInfo.EnumerateFiles().OrderBy(d => d.LastWriteTime))
             {
-                if (fileCount < config.Text.LoggerInformation.FileHistoryToKeep)
+                if (fileCount > config.Text.LoggerInformation.FileHistoryToKeep)
                 {
                     listToRemove.Add(file.FullName);
-                    fileCount++;
+                    fileCount--;
                 }
             }
 

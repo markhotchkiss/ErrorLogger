@@ -18,3 +18,4 @@ D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\EntityFr
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\System.Data.SQLite.xml
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\CsvHelper.dll
 D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\bin\Debug\CsvHelper.xml
+D:\SourceCode\VS2015\Projects\Personal\ErrorLogger\MJH.Logger\obj\Debug\MJH.Logger.csprojResolveAssemblyReference.cache
