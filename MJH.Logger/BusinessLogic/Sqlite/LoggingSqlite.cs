@@ -12,7 +12,7 @@ namespace MJH.BusinessLogic.Sqlite
         private readonly string _dbName;
         private readonly string _dbLocation;
 
-        private readonly SQLiteConnection _dbConnection;
+        private SQLiteConnection _dbConnection;
         private readonly string _databasePassword = string.Empty;
 
         private readonly LoggerConfig _config;
@@ -23,8 +23,6 @@ namespace MJH.BusinessLogic.Sqlite
 
             _dbName = _config.SQLite.ServerInformation.LogFileName;
             _dbLocation = _config.SQLite.ServerInformation.LogFileLocation;
-
-            _dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};");
         }
 
         public bool Exists()
@@ -51,13 +49,16 @@ namespace MJH.BusinessLogic.Sqlite
 
         private int ExecuteSqLiteNonQuery(string command)
         {
-            _dbConnection.Open();
+            using (_dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};"))
+            {
+                _dbConnection.Open();
 
-            var sqliteCommand = new SQLiteCommand(command, _dbConnection);
-            var result = sqliteCommand.ExecuteNonQuery();
-            _dbConnection.Close();
+                var sqliteCommand = new SQLiteCommand(command, _dbConnection);
+                var result = sqliteCommand.ExecuteNonQuery();
+                _dbConnection.Close();
 
-            return result;
+                return result;
+            }
         }
 
         public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)

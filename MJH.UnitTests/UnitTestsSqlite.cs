@@ -69,7 +69,27 @@ namespace MJH.UnitTests
         [Test, Order(3)]
         public void WriteSqliteDebug()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10000; i++)
+            {
+                try
+                {
+                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
+                }
+                catch (Exception exception)
+                {
+                    Logger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
+                }
+            }
+
+            //Check that the log file exists with text inside
+            var fileInfo = new FileInfo(_config.SQLite.ServerInformation.LogFileLocation + "\\" + _config.SQLite.ServerInformation.LogFileName);
+            Assert.True(fileInfo.Exists);
+        }
+
+        [Test, Order(3)]
+        public void WriteSqliteDebugDuplicate()
+        {
+            for (int i = 0; i < 10000; i++)
             {
                 try
                 {
