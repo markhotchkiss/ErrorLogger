@@ -3,12 +3,13 @@ using MJH.Interfaces;
 using MJH.Loggers;
 using MJH.Models;
 using System;
+using System.IO;
 
 namespace MJH.Factories
 {
     internal class LoggerFactory
     {
-        private LoggerConfig _config;
+        private readonly LoggerConfig _config;
 
         public LoggerFactory()
         {
@@ -17,12 +18,15 @@ namespace MJH.Factories
 
         internal ILogger GetLoggerRepository()
         {
-            _config = new ConfigurationHandler().Read();
-
             ILogger repo;
             switch (_config.LoggerType)
             {
                 case LoggingTypeModel.LogOutputType.TextFile:
+                    var textOutput = new DirectoryInfo(_config.Text.FileInformation.LogFileLocation);
+                    if (!textOutput.Exists)
+                    {
+                        textOutput.Create();
+                    }
                     repo = new TextLogger
                     {
                         LogOutputFileLocation = _config.Text.FileInformation.LogFileLocation,
@@ -37,6 +41,11 @@ namespace MJH.Factories
                     };
                     break;
                 case LoggingTypeModel.LogOutputType.SQLite:
+                    var sqliteOutput = new DirectoryInfo(_config.SQLite.ServerInformation.LogFileLocation);
+                    if (!sqliteOutput.Exists)
+                    {
+                        sqliteOutput.Create();
+                    }
                     repo = new SqliteLogger()
                     {
                         LoggingLevel = _config.LoggingLevel
