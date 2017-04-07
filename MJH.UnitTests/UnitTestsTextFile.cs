@@ -23,7 +23,7 @@ namespace MJH.UnitTests
 
             if (_config.LoggerType != LoggingTypeModel.LogOutputType.TextFile)
             {
-                throw new Exception("Set the logger type to SQLite in the Config file before running these tests.");
+                throw new Exception("Set the logger type to TextFile in the Config file before running these tests.");
             }
         }
 

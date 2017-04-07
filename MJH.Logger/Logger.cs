@@ -11,6 +11,7 @@ namespace MJH
     {
         private static readonly ILogger LoggerInterface;
         private static readonly ILogReader LogReader;
+        private static readonly ILogReaderV2 LogReaderV2;
 
         static Logger()
         {
@@ -19,12 +20,14 @@ namespace MJH
 
             var logReaderFactory = new LogReaderFactory();
             LogReader = logReaderFactory.GetLogReaderRepository();
+            LogReaderV2 = logReaderFactory.GetLogReaderV2Repository();
         }
 
         public static void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
                 LoggerInterface.LogError(logCategory, exception);
             }
             catch
@@ -36,6 +39,7 @@ namespace MJH
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
                 LoggerInterface.LogInfo(logCategory, exception);
             }
             catch
@@ -48,6 +52,7 @@ namespace MJH
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
                 LoggerInterface.LogDebug(logCategory, exception);
             }
             catch
@@ -60,6 +65,7 @@ namespace MJH
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
                 LoggerInterface.LogError(logCategory, message);
             }
             catch
@@ -71,6 +77,7 @@ namespace MJH
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
                 LoggerInterface.LogInfo(logCategory, message);
             }
             catch
@@ -83,6 +90,7 @@ namespace MJH
         {
             try
             {
+                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
                 LoggerInterface.LogDebug(logCategory, message);
             }
             catch
@@ -100,7 +108,32 @@ namespace MJH
             {
                 return null;
             }
+        }
 
+        public static IReadOnlyCollection<Error> Read(int recordCount)
+        {
+            try
+            {
+                return LogReaderV2.ReadMaxRecordCount(recordCount);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static IReadOnlyCollection<Error> Read(DateTime startDate, DateTime endDate)
+        {
+            var log = LogReaderV2.ReadBetweenDates(startDate, endDate);
+
+            return log;
+        }
+
+        public static IReadOnlyCollection<Error> Read(LoggingTypeModel.LogCategory logCategory)
+        {
+            var log = LogReaderV2.ReadSpecificLevel(logCategory);
+
+            return log;
         }
     }
 }

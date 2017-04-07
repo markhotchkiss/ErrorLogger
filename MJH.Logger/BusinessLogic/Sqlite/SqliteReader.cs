@@ -9,7 +9,7 @@ using System.Globalization;
 
 namespace MJH.BusinessLogic.Sqlite
 {
-    internal class SqliteReader : ILogReader
+    internal class SqliteReader : ILogReader, ILogReaderV2
     {
         private readonly string _dbName;
         private readonly string _dbLocation;
@@ -31,11 +31,55 @@ namespace MJH.BusinessLogic.Sqlite
 
         public IReadOnlyCollection<Error> Read()
         {
+            var command = "SELECT * FROM Error ORDER BY DateTimeUTC DESC";
+
+            var sqliteCommand = new SQLiteCommand(command, _dbConnection);
+
+            var reader = ExecuteSqLiteNonQuery(sqliteCommand);
+
+            return CollectionConstructor(reader);
+        }
+
+        public IReadOnlyCollection<Error> ReadMaxRecordCount(int recordCount)
+        {
+            var command = "SELECT * FROM Error ORDER BY DateTimeUTC DESC LIMIT @MaxRecordCount;";
+
+            var sqlitecommand = new SQLiteCommand(command, _dbConnection);
+            sqlitecommand.Parameters.AddWithValue("@MaxRecordCount", recordCount);
+
+            var reader = ExecuteSqLiteNonQuery(sqlitecommand);
+
+            return CollectionConstructor(reader);
+        }
+
+        public IReadOnlyCollection<Error> ReadBetweenDates(DateTime startDate, DateTime endDate)
+        {
+            var command = "SELECT * FROM Error WHERE DateTimeUTC BETWEEN @StartDate AND @EndDate ORDER BY DateTimeUTC DESC";
+
+            var sqlitecommand = new SQLiteCommand(command, _dbConnection);
+            sqlitecommand.Parameters.AddWithValue("@StartDate", startDate);
+            sqlitecommand.Parameters.AddWithValue("@EndDate", endDate);
+
+            var reader = ExecuteSqLiteNonQuery(sqlitecommand);
+
+            return CollectionConstructor(reader);
+        }
+
+        public IReadOnlyCollection<Error> ReadSpecificLevel(LoggingTypeModel.LogCategory category)
+        {
+            var command = "SELECT * FROM Error WHERE LoggingLevel = @LoggingLevel ORDER BY DateTimeUTC DESC";
+
+            var sqlitecommand = new SQLiteCommand(command, _dbConnection);
+            sqlitecommand.Parameters.AddWithValue("@LoggingLevel", category);
+
+            var reader = ExecuteSqLiteNonQuery(sqlitecommand);
+
+            return CollectionConstructor(reader);
+        }
+
+        private IReadOnlyCollection<Error> CollectionConstructor(SQLiteDataReader reader)
+        {
             var errorCollection = new List<Error>();
-
-            var command = "SELECT * FROM Error";
-
-            var reader = ExecuteSqLiteNonQuery(command);
 
             while (reader.Read())
             {
@@ -59,13 +103,23 @@ namespace MJH.BusinessLogic.Sqlite
             return errorCollection;
         }
 
-        private SQLiteDataReader ExecuteSqLiteNonQuery(string command)
+        private SQLiteDataReader ExecuteSqLiteNonQuery(SQLiteCommand command)
         {
-            _dbConnection.Open();
+            try
+            {
+                _dbConnection.Open();
 
-            var sqliteCommand = new SQLiteCommand(command, _dbConnection);
-            var result = sqliteCommand.ExecuteReader();
-            return result;
+                var result = command.ExecuteReader();
+
+                return result;
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+
         }
     }
 }

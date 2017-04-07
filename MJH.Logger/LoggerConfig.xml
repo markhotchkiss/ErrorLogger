@@ -4,10 +4,10 @@
   <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
   <Sql>
     <ServerInformation>
-      <Server>(local)\MSSQL2012</Server>
+      <Server>localhost</Server>
       <Database>ErrorLogger</Database>
-      <Username>sa</Username>
-      <Password>5chne1deR</Password>
+      <Username>TestUser</Username>
+      <Password>T3stUs3r!</Password>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
@@ -16,7 +16,7 @@
   <SQLite>
     <ServerInformation>
       <LogFileName>Activity.db</LogFileName>
-      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
+      <LogFileLocation>C:\SourceCode\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
@@ -25,8 +25,8 @@
   <Text>
     <FileInformation>
       <LogFileName>Activity.log</LogFileName>
-      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
-      <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
+      <LogFileLocation>C:\SourceCode\Tests\Logger</LogFileLocation>
+      <ArchiveDirectory>C:\SourceCode\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
       <FileHistoryToKeep>2</FileHistoryToKeep> <!--Use 0 for no truncation-->

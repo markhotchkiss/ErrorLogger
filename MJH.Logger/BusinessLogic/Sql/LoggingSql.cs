@@ -23,17 +23,8 @@ namespace MJH.BusinessLogic.Sql
 
         public void Create()
         {
-            try
-            {
-                _context.Database.CreateIfNotExists();
-                _context.SaveChanges();
-            }
-            catch (Exception exception)
-            {
-
-                throw;
-            }
-
+            _context.Database.CreateIfNotExists();
+            _context.SaveChanges();
         }
 
         public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)

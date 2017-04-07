@@ -235,6 +235,7 @@
     <Compile Include="Interfaces\ILoggingPurge.cs" />
     <Compile Include="Interfaces\ILoggingWriter.cs" />
     <Compile Include="Interfaces\ILogReader.cs" />
+    <Compile Include="Interfaces\ILogReaderV2.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Loggers\SqliteLogger.cs" />
     <Compile Include="Loggers\SqlLogger.cs" />

@@ -3,6 +3,7 @@ using MJH.Models;
 using NUnit.Framework;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace MJH.UnitTests
 {
@@ -69,7 +70,7 @@ namespace MJH.UnitTests
         [Test, Order(3)]
         public void WriteSqliteDebug()
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 try
                 {
@@ -89,7 +90,7 @@ namespace MJH.UnitTests
         [Test, Order(3)]
         public void WriteSqliteDebugDuplicate()
         {
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 try
                 {
@@ -111,6 +112,26 @@ namespace MJH.UnitTests
         {
             var log = Logger.Read();
             Assert.IsNotNull(log);
+        }
+
+        [Test, Order(5)]
+        public void Read_MaxRecords5()
+        {
+            var log = Logger.Read(5);
+
+            Assert.AreEqual(5, log.Count);
+        }
+
+        [Test, Order(6)]
+        public void Read_BetweenDates()
+        {
+            var startDate = DateTime.Now.AddMinutes(-10);
+            var endDate = DateTime.Now;
+
+            var log = Logger.Read(startDate, endDate);
+
+            Assert.That(log.Count(dt => dt.DateTimeUTC < startDate) == 0);
+            Assert.That(log.Count(dt => dt.DateTimeUTC > endDate) == 0);
         }
     }
 }

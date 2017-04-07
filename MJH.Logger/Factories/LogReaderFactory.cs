@@ -32,5 +32,26 @@ namespace MJH.Factories
 
             return repo;
         }
+
+        internal ILogReaderV2 GetLogReaderV2Repository()
+        {
+            ILogReaderV2 repo = null;
+            switch (_config.LoggerType)
+            {
+                case LoggingTypeModel.LogOutputType.TextFile:
+                    //repo = new TextFileReader();
+                    break;
+                case LoggingTypeModel.LogOutputType.SQL:
+                    //repo = new SqlReader();
+                    break;
+                case LoggingTypeModel.LogOutputType.SQLite:
+                    repo = new SqliteReader();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            return repo;
+        }
     }
 }
