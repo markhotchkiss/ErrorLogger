@@ -11,6 +11,6 @@ namespace MJH.Interfaces
 
         IReadOnlyCollection<Error> ReadBetweenDates(DateTime startDate, DateTime endDate);
 
-        IReadOnlyCollection<Error> ReadSpecificLevel(LoggingTypeModel.LogCategory category);
+        IReadOnlyCollection<Error> ReadSpecificCategory(LoggingTypeModel.LogCategory category);
     }
 }

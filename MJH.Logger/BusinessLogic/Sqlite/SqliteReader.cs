@@ -4,6 +4,7 @@ using MJH.Interfaces;
 using MJH.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.Globalization;
 
@@ -65,19 +66,19 @@ namespace MJH.BusinessLogic.Sqlite
             return CollectionConstructor(reader);
         }
 
-        public IReadOnlyCollection<Error> ReadSpecificLevel(LoggingTypeModel.LogCategory category)
+        public IReadOnlyCollection<Error> ReadSpecificCategory(LoggingTypeModel.LogCategory category)
         {
-            var command = "SELECT * FROM Error WHERE LoggingLevel = @LoggingLevel ORDER BY DateTimeUTC DESC";
+            var command = "SELECT * FROM Error WHERE ErrorType = @Category ORDER BY DateTimeUTC DESC";
 
             var sqlitecommand = new SQLiteCommand(command, _dbConnection);
-            sqlitecommand.Parameters.AddWithValue("@LoggingLevel", category);
+            sqlitecommand.Parameters.AddWithValue("@Category", category.ToString());
 
             var reader = ExecuteSqLiteNonQuery(sqlitecommand);
 
             return CollectionConstructor(reader);
         }
 
-        private IReadOnlyCollection<Error> CollectionConstructor(SQLiteDataReader reader)
+        private IReadOnlyCollection<Error> CollectionConstructor(IDataReader reader)
         {
             var errorCollection = new List<Error>();
 

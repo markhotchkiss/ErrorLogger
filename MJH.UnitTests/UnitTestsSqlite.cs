@@ -133,5 +133,14 @@ namespace MJH.UnitTests
             Assert.That(log.Count(dt => dt.DateTimeUTC < startDate) == 0);
             Assert.That(log.Count(dt => dt.DateTimeUTC > endDate) == 0);
         }
+
+        [Test, Order(6)]
+        public void Read_SpecificLoggingLevel()
+        {
+            var log = Logger.Read(LoggingTypeModel.LogCategory.Process);
+
+            Assert.That(log.Count > 0);
+            Assert.That(log.Count(l => l.ErrorType != "Process") == 0);
+        }
     }
 }

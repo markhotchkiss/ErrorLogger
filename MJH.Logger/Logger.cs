@@ -23,11 +23,16 @@ namespace MJH
             LogReaderV2 = logReaderFactory.GetLogReaderV2Repository();
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given exception.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="exception"></param>
         public static void LogError(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {exception}");
                 LoggerInterface.LogError(logCategory, exception);
             }
             catch
@@ -35,11 +40,16 @@ namespace MJH
             }
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given exception.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="exception"></param>
         public static void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {exception}");
                 LoggerInterface.LogInfo(logCategory, exception);
             }
             catch
@@ -48,11 +58,16 @@ namespace MJH
 
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given exception.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="exception"></param>
         public static void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {exception.ToString()}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {exception}");
                 LoggerInterface.LogDebug(logCategory, exception);
             }
             catch
@@ -61,11 +76,16 @@ namespace MJH
 
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given String Message.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="message"></param>
         public static void LogError(LoggingTypeModel.LogCategory logCategory, string message)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {message}");
                 LoggerInterface.LogError(logCategory, message);
             }
             catch
@@ -73,11 +93,16 @@ namespace MJH
             }
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given String Message.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="message"></param>
         public static void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {message}");
                 LoggerInterface.LogInfo(logCategory, message);
             }
             catch
@@ -86,11 +111,16 @@ namespace MJH
 
         }
 
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Error with the given String Message.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <param name="message"></param>
         public static void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
         {
             try
             {
-                Console.WriteLine($"{DateTime.Now} - {logCategory.ToString()} - {message}");
+                Console.WriteLine($"{DateTime.Now} - {logCategory} - {message}");
                 LoggerInterface.LogDebug(logCategory, message);
             }
             catch
@@ -98,6 +128,10 @@ namespace MJH
             }
         }
 
+        /// <summary>
+        /// Reads all Logged Errors from the Log Store.
+        /// </summary>
+        /// <returns>IReadonlyCollection</returns>
         public static IReadOnlyCollection<Error> Read()
         {
             try
@@ -110,6 +144,11 @@ namespace MJH
             }
         }
 
+        /// <summary>
+        /// Reads the Last X Logged Errors from the Log Store ordered by Date and Time Logged in Descending order.
+        /// </summary>
+        /// <param name="recordCount"></param>
+        /// <returns>IReadOnlyCollection</returns>
         public static IReadOnlyCollection<Error> Read(int recordCount)
         {
             try
@@ -122,6 +161,12 @@ namespace MJH
             }
         }
 
+        /// <summary>
+        /// Read all Logged Errors between given Dates and Times.
+        /// </summary>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        /// <returns>IReadOnlyCollection</returns>
         public static IReadOnlyCollection<Error> Read(DateTime startDate, DateTime endDate)
         {
             var log = LogReaderV2.ReadBetweenDates(startDate, endDate);
@@ -129,9 +174,14 @@ namespace MJH
             return log;
         }
 
+        /// <summary>
+        /// Returns all Logged Errors by given Log Category Type.
+        /// </summary>
+        /// <param name="logCategory"></param>
+        /// <returns>IReadOnlyCollection</returns>
         public static IReadOnlyCollection<Error> Read(LoggingTypeModel.LogCategory logCategory)
         {
-            var log = LogReaderV2.ReadSpecificLevel(logCategory);
+            var log = LogReaderV2.ReadSpecificCategory(logCategory);
 
             return log;
         }
