@@ -28,6 +28,5 @@ C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\bin\Release\CsvHelper.xml
 C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.xml
 C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\bin\Release\EntityFramework.SqlServer.xml
 C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\bin\Release\System.Data.SQLite.xml
-C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.csprojResolveAssemblyReference.cache
 C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.dll
 C:\SourceCode\VS2015\GitHub\ErrorLogger\MJH.Logger\obj\Release\MJH.Logger.pdb
