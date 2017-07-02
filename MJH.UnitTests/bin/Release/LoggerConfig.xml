@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LoggerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <LoggerType>SQLite</LoggerType>
+  <LoggerType>TextFile</LoggerType>
   <LoggingLevel>Debug</LoggingLevel>
   <Sql>
     <ServerInformation>
-      <Server>(local)\MSSQL2012</Server>
+      <Server>localhost</Server>
       <Database>ErrorLogger</Database>
-      <Username>sa</Username>
-      <Password>5chne1deR</Password>
+      <Username>TestUser</Username>
+      <Password>T3stUs3r!</Password>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep>
@@ -16,7 +16,7 @@
   <SQLite>
     <ServerInformation>
       <LogFileName>Activity.db</LogFileName>
-      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
+      <LogFileLocation>C:\SourceCode\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep>
@@ -25,8 +25,8 @@
   <Text>
     <FileInformation>
       <LogFileName>Activity.log</LogFileName>
-      <LogFileLocation>D:\Tests\Logger</LogFileLocation>
-      <ArchiveDirectory>D:\Tests\Logger\Archive</ArchiveDirectory>
+      <LogFileLocation>C:\SourceCode\Tests\Logger</LogFileLocation>
+      <ArchiveDirectory>C:\SourceCode\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
       <FileHistoryToKeep>2</FileHistoryToKeep>

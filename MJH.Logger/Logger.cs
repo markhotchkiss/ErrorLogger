@@ -145,7 +145,7 @@ namespace MJH
         }
 
         /// <summary>
-        /// Reads the Last X Logged Errors from the Log Store ordered by Date and Time Logged in Descending order.
+        /// Reads the Last X Logged Errors from the Log Store ordered by Date and Time Logged in Descending order.  Not available if using the TextFile logger.
         /// </summary>
         /// <param name="recordCount"></param>
         /// <returns>IReadOnlyCollection</returns>
@@ -162,7 +162,7 @@ namespace MJH
         }
 
         /// <summary>
-        /// Read all Logged Errors between given Dates and Times.
+        /// Read all Logged Errors between given Dates and Times. Not available if using the TextFile logger.
         /// </summary>
         /// <param name="startDate"></param>
         /// <param name="endDate"></param>
@@ -175,7 +175,7 @@ namespace MJH
         }
 
         /// <summary>
-        /// Returns all Logged Errors by given Log Category Type.
+        /// Returns all Logged Errors by given Log Category Type.  Not available if using the TextFile logger.
         /// </summary>
         /// <param name="logCategory"></param>
         /// <returns>IReadOnlyCollection</returns>

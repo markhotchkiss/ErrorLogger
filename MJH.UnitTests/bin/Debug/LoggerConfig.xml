@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<LoggerConfig>
-  <LoggerType>SQLite</LoggerType> <!--TextFile, SQLite, SQL-->
-  <LoggingLevel>Debug</LoggingLevel> <!--Debug, Info, Error - NOTE, this is case sensitive-->
+<?xml version="1.0" encoding="utf-8"?>
+<LoggerConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <LoggerType>TextFile</LoggerType>
+  <LoggingLevel>Debug</LoggingLevel>
   <Sql>
     <ServerInformation>
       <Server>localhost</Server>
@@ -10,7 +10,7 @@
       <Password>T3stUs3r!</Password>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
+      <HistoryToKeep>0</HistoryToKeep>
     </LoggerInformation>
   </Sql>
   <SQLite>
@@ -19,7 +19,7 @@
       <LogFileLocation>C:\SourceCode\Tests\Logger</LogFileLocation>
     </ServerInformation>
     <LoggerInformation>
-      <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
+      <HistoryToKeep>0</HistoryToKeep>
     </LoggerInformation>
   </SQLite>
   <Text>
@@ -29,7 +29,7 @@
       <ArchiveDirectory>C:\SourceCode\Tests\Logger\Archive</ArchiveDirectory>
     </FileInformation>
     <LoggerInformation>
-      <FileHistoryToKeep>2</FileHistoryToKeep> <!--Use 0 for no truncation-->
+      <FileHistoryToKeep>2</FileHistoryToKeep>
       <MaxFileSize>1</MaxFileSize>
     </LoggerInformation>
   </Text>

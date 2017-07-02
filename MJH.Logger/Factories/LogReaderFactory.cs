@@ -39,10 +39,9 @@ namespace MJH.Factories
             switch (_config.LoggerType)
             {
                 case LoggingTypeModel.LogOutputType.TextFile:
-                    //repo = new TextFileReader();
-                    break;
+                    return null;
                 case LoggingTypeModel.LogOutputType.SQL:
-                    //repo = new SqlReader();
+                    repo = new SqlReader();
                     break;
                 case LoggingTypeModel.LogOutputType.SQLite:
                     repo = new SqliteReader();

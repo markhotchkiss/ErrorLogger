@@ -26,7 +26,7 @@ namespace MJH.UnitTests
         }
 
         [Test, Order(1)]
-        public void WriteSqliteError()
+        public void WriteSqlError()
         {
             for (int i = 0; i < 10; i++)
             {
@@ -39,6 +39,28 @@ namespace MJH.UnitTests
                     Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
                 }
             }
+        }
+
+        [Test, Order(2)]
+        public void Read_MaxRecordCount()
+        {
+            const int recordsToRead = 10;
+
+            var result = Logger.Read(recordsToRead);
+
+            Assert.AreEqual(recordsToRead, result);
+        }
+
+        [Test, Order(3)]
+        public void Read_ReadBetweenDates()
+        {
+            
+        }
+
+        [Test, Order(4)]
+        public void Read_ReadSpecificCategory()
+        {
+            
         }
     }
 }
