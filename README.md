@@ -1,5 +1,9 @@
 # Error Logger
-This is an Error Logger for C# Applications.  It uses a standard class library to allow you to easily log all errors to a single Text File, SQLite or SQL.  You can pass in parameters to allow the text file to be created in a specific location with any given name.
+This is an Error Logger for C# Applications.  It uses a standard class library to allow you to easily log all errors to a single Text File, SQLite or SQL.  You can pass in parameters to allow the text file to be created in a specific location with any given name.  It also takes care of Archiving where appropriate and even gives you options for reading your log file back in one easy, simple command.
+
+The library has now been updated to include more "Read" options, including reading the last X records, Logs by Category and returning all logs between two dates.
+
+Throw this in your Exceptions for easy exception logging or pass in a string for a static error message.
 
 Check the [Usage](https://github.com/markhotchkiss/ErrorLogger/wiki#usage) section below for more info...
 
