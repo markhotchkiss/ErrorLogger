@@ -107,6 +107,15 @@ namespace MJH.UnitTests
             Assert.True(fileInfo.Exists);
         }
 
+        [Test, Order(5)]
+        public void WriteSqliteLongMessage()
+        {
+            var message =
+                "The HTTP request is unauthorized with client authentication scheme 'Digest'.The authentication header received from the server was 'Digest realm=\"ews@SxWBM\",qop=\"auth\",nonce=\"A2591E18D625F22A1EC0CB914E8781FF\",opaque=\"C117F5\"'.The remote server returned an error: (401) Unauthorized.Server stack trace: at System.ServiceModel.Channels.HttpChannelUtilities.ValidateAuthentication(HttpWebRequest request, HttpWebResponse response, WebException responseException, HttpChannelFactory`1 factory)    at System.ServiceModel.Channels.HttpChannelUtilities.ValidateRequestReplyResponse(HttpWebRequest request, HttpWebResponse response, HttpChannelFactory`1 factory, WebException responseException, ChannelBinding channelBinding)    at System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelRequest.WaitForReply(TimeSpan timeout)    at System.ServiceModel.Channels.RequestChannel.Request(Message message, TimeSpan timeout)    at System.ServiceModel.Dispatcher.RequestChannelBinder.Request(Message message, TimeSpan timeout)    at System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)    at System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)    at System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)  Exception rethrown at[0]:     at System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)    at System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData & msgData, Int32 type)    at Ews.Client.IDataExchange.GetWebServiceInformation(GetWebServiceInformationRequest1 request)    at Ews.Client.DataExchangeClient.Ews.Client.IDataExchange.GetWebServiceInformation(GetWebServiceInformationRequest1 request)    at Ews.Client.DataExchangeClient.GetWebServiceInformation(GetWebServiceInformationRequest request)    at Ews.Client.EwsClient.ExecuteAndLogCall[TRequest, TResponse](String methodName, TRequest request, Func`2 methodToLog)    at Ews.Client.EwsClient.get_EwsVersionImplemented()    at Ews.Client.EwsClient..ctor(EwsSecurity credentials, String address, EwsBindingConfig bindingConfig, Nullable`1 compatibilityVersion)    at Mongoose.Process.ExtensionMethods.CreateClientConnection(IEwsEndpoint ewsEndpoint)    at Mongoose.Process.Ews.AlarmItemReader.ReadData()";
+
+            Logger.LogError(LoggingTypeModel.LogCategory.Process, message);
+        }
+
         [Test, Order(4)]
         public void Read()
         {

@@ -196,6 +196,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\Sqlite\AllowedCharacters.cs" />
     <Compile Include="BusinessLogic\Sqlite\SqliteReader.cs" />
     <Compile Include="BusinessLogic\Sql\SqlReader.cs" />
     <Compile Include="BusinessLogic\TextLogger\TextFileReader.cs" />

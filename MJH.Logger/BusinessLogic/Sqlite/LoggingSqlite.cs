@@ -54,7 +54,9 @@ namespace MJH.BusinessLogic.Sqlite
                 _dbConnection.Open();
 
                 var sqliteCommand = new SQLiteCommand(command, _dbConnection);
+
                 var result = sqliteCommand.ExecuteNonQuery();
+
                 _dbConnection.Close();
 
                 return result;

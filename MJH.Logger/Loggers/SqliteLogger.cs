@@ -60,7 +60,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("ERROR", logCategory, message, DateTime.Now);
+            _logger.Write("ERROR", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
@@ -70,7 +70,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("INFO", logCategory, message, DateTime.Now);
+            _logger.Write("INFO", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
@@ -80,7 +80,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("DEBUG", logCategory, message, DateTime.Now);
+            _logger.Write("DEBUG", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public IReadOnlyCollection<Error> ReadLog()
