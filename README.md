@@ -31,7 +31,7 @@ Below is an annotated version to get you started!
       <Server>(local)\MSSQL2012</Server>
       <Database>ErrorLogger</Database>
       <Username>sa</Username>
-      <Password>5chne1deR</Password>
+      <Password>Pa55word</Password>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->
