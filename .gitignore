@@ -45,3 +45,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+/MJH.Logger/obj/Debug
+/.vs/ErrorLogger/v15/Server/sqlite3
+/MJH.UnitTests/obj/Debug
