@@ -38,105 +38,77 @@ namespace MJH.UnitTests
         [Test, Order(1)]
         public void LogError()
         {
-            try
-            {
-                throw new Exception("ErrorLogger", new Exception("This is my inner exception, and it contains a comma!"));
-            }
-            catch (Exception exception)
-            {
-                Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
+            Logger.LogError(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception, and it contains a comma!")));
 
-                var loggerConfig = _config.Text;
+            var loggerConfig = _config.Text;
 
-                //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
-                Assert.True(fileInfo.Exists);
+            //Check that the log file exists with text inside
+            var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
+            Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(fileInfo.FullName);
-                Assert.IsNotEmpty(streamReader.ReadToEnd());
-                streamReader.Close();
+            var streamReader = new StreamReader(fileInfo.FullName);
+            Assert.IsNotEmpty(streamReader.ReadToEnd());
+            streamReader.Close();
 
-                //File.Delete(fileInfo.FullName);
-            }
+            //File.Delete(fileInfo.FullName);
         }
 
         [Test, Order(2)]
         public void LogErrorWithNullInnerException()
         {
-            try
-            {
-                throw new Exception("ErrorLogger");
-            }
-            catch (Exception exception)
-            {
-                Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
+            Logger.LogError(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger"));
 
-                var loggerConfig = _config.Text;
+            var loggerConfig = _config.Text;
 
-                //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
+            //Check that the log file exists with text inside
+            var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
 
-                Assert.True(fileInfo.Exists);
+            Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(fileInfo.FullName);
-                var errorText = streamReader.ReadToEnd();
-                streamReader.Close();
+            var streamReader = new StreamReader(fileInfo.FullName);
+            var errorText = streamReader.ReadToEnd();
+            streamReader.Close();
 
-                Assert.IsNotEmpty(errorText);
-                //Assert.That(!errorText.Contains("InnerException"));
+            Assert.IsNotEmpty(errorText);
+            //Assert.That(!errorText.Contains("InnerException"));
 
-                //File.Delete(fileInfo.FullName);
-            }
+            //File.Delete(fileInfo.FullName);
         }
 
         [Test, Order(3)]
         public void LogInfo()
         {
-            try
-            {
-                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-            }
-            catch (Exception exception)
-            {
-                Logger.LogInfo(LoggingTypeModel.LogCategory.Process, exception);
+            Logger.LogInfo(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
 
-                //Check that the log file exists with text inside
-                var loggerConfig = _config.Text;
+            //Check that the log file exists with text inside
+            var loggerConfig = _config.Text;
 
-                var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
-                Assert.True(fileInfo.Exists);
+            var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
+            Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(fileInfo.FullName);
-                Assert.IsNotEmpty(streamReader.ReadToEnd());
-                streamReader.Close();
+            var streamReader = new StreamReader(fileInfo.FullName);
+            Assert.IsNotEmpty(streamReader.ReadToEnd());
+            streamReader.Close();
 
-                //File.Delete(fileInfo.FullName);
-            }
+            //File.Delete(fileInfo.FullName);
         }
 
         [Test, Order(4)]
         public void LogDebug()
         {
-            try
-            {
-                throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-            }
-            catch (Exception exception)
-            {
-                Logger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
+            Logger.LogDebug(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
 
-                var loggerConfig = _config.Text;
+            var loggerConfig = _config.Text;
 
-                //Check that the log file exists with text inside
-                var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
-                Assert.True(fileInfo.Exists);
+            //Check that the log file exists with text inside
+            var fileInfo = new FileInfo(loggerConfig.FileInformation.LogFileLocation + "\\" + loggerConfig.FileInformation.LogFileName);
+            Assert.True(fileInfo.Exists);
 
-                var streamReader = new StreamReader(fileInfo.FullName);
-                Assert.IsNotEmpty(streamReader.ReadToEnd());
-                streamReader.Close();
+            var streamReader = new StreamReader(fileInfo.FullName);
+            Assert.IsNotEmpty(streamReader.ReadToEnd());
+            streamReader.Close();
 
-                //File.Delete(fileInfo.FullName);
-            }
+            //File.Delete(fileInfo.FullName);
         }
 
         [Test, Order(5)]

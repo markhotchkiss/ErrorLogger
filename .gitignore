@@ -48,3 +48,6 @@ Temporary Items
 /MJH.Logger/obj/Debug
 /.vs/ErrorLogger/v15/Server/sqlite3
 /MJH.UnitTests/obj/Debug
+/.vs/ErrorLogger/v15
+/MJH.Logger/bin/Debug
+/MJH.UnitTests/bin/Debug

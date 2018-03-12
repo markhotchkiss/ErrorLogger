@@ -11,9 +11,9 @@ namespace MJH.BusinessLogic.Sql
     {
         private readonly ErrorLoggerEntities _context;
 
-        public LoggingSql()
+        public LoggingSql(ErrorLoggerEntities context)
         {
-            _context = new Entities.ErrorLoggerEntities(new SqlConnectionBuilder().ConnectionString().ToString());
+            _context = context;
         }
 
         public bool Exists()

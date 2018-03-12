@@ -32,14 +32,7 @@ namespace MJH.UnitTests
         {
             for (int i = 0; i < 10; i++)
             {
-                try
-                {
-                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-                }
-                catch (Exception exception)
-                {
-                    Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
-                }
+                Logger.LogError(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
             }
 
             //Check that the log file exists with text inside
@@ -52,15 +45,9 @@ namespace MJH.UnitTests
         {
             for (int i = 0; i < 10; i++)
             {
-                try
-                {
-                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-                }
-                catch (Exception exception)
-                {
-                    Logger.LogInfo(LoggingTypeModel.LogCategory.Process, exception);
-                }
+                Logger.LogInfo(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
             }
+
 
             //Check that the log file exists with text inside
             var fileInfo = new FileInfo(_config.SQLite.ServerInformation.LogFileLocation + "\\" + _config.SQLite.ServerInformation.LogFileName);
@@ -72,14 +59,7 @@ namespace MJH.UnitTests
         {
             for (int i = 0; i < 100; i++)
             {
-                try
-                {
-                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-                }
-                catch (Exception exception)
-                {
-                    Logger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
-                }
+                Logger.LogDebug(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
             }
 
             //Check that the log file exists with text inside
@@ -88,23 +68,24 @@ namespace MJH.UnitTests
         }
 
         [Test, Order(3)]
-        public void WriteSqliteDebugDuplicate()
+        public void WriteSqliteDebug_CheckConcurrency()
         {
-            for (int i = 0; i < 100; i++)
+            try
             {
-                try
+                for (int i = 0; i < 100; i++)
                 {
-                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
+                    Logger.LogDebug(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
                 }
-                catch (Exception exception)
-                {
-                    Logger.LogDebug(LoggingTypeModel.LogCategory.Process, exception);
-                }
-            }
 
-            //Check that the log file exists with text inside
-            var fileInfo = new FileInfo(_config.SQLite.ServerInformation.LogFileLocation + "\\" + _config.SQLite.ServerInformation.LogFileName);
-            Assert.True(fileInfo.Exists);
+                //Check that the log file exists with text inside
+                var fileInfo = new FileInfo(_config.SQLite.ServerInformation.LogFileLocation + "\\" + _config.SQLite.ServerInformation.LogFileName);
+                Assert.True(fileInfo.Exists);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
         }
 
         [Test, Order(5)]

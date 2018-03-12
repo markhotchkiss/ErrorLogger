@@ -28,16 +28,9 @@ namespace MJH.UnitTests
         [Test, Order(1)]
         public void WriteSqlError()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 10000; i++)
             {
-                try
-                {
-                    throw new Exception("ErrorLogger", new Exception("This is my inner exception"));
-                }
-                catch (Exception exception)
-                {
-                    Logger.LogError(LoggingTypeModel.LogCategory.Process, exception);
-                }
+                Logger.LogError(LoggingTypeModel.LogCategory.Process, new Exception("ErrorLogger", new Exception("This is my inner exception")));
             }
         }
 
@@ -54,13 +47,13 @@ namespace MJH.UnitTests
         [Test, Order(3)]
         public void Read_ReadBetweenDates()
         {
-            
+
         }
 
         [Test, Order(4)]
         public void Read_ReadSpecificCategory()
         {
-            
+
         }
     }
 }

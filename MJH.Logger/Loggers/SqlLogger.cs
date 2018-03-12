@@ -3,6 +3,7 @@ using MJH.BusinessLogic.Sql;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
+using MJH.Entities;
 
 namespace MJH.Loggers
 {
@@ -12,9 +13,12 @@ namespace MJH.Loggers
 
         private readonly LoggingSql _logger;
 
+        private readonly ErrorLoggerEntities _context =
+            new ErrorLoggerEntities(new SqlConnectionBuilder().ConnectionString().ToString());
+
         public SqlLogger()
         {
-            _logger = new LoggingSql();
+            _logger = new LoggingSql(_context);
 
             if (!_logger.Exists())
             {
