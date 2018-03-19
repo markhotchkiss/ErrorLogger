@@ -1,9 +1,12 @@
 ﻿using MJH.BusinessLogic.Configuration;
-using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
+using System.Data;
+using System.Data.Entity;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MJH.BusinessLogic.Sql
@@ -11,56 +14,32 @@ namespace MJH.BusinessLogic.Sql
     internal class LoggingSql : ILoggingWriter, ILoggingPurge
     {
         private SqlConnection _sqlConnection;
-        private LoggerConfig _config;
+        private readonly LoggerConfig _config;
 
         public LoggingSql()
         {
             var handler = new ConfigurationHandler();
             _config = handler.Read();
 
-            CreateSqlConnection();
+            BuildSqlConnection();
         }
 
         public bool Exists()
         {
-            _config = new ConfigurationHandler().Read();
-
-            _sqlConnection = BuildSqlConnection();
-
-            var sqlCommand = new SqlCommand("if db_id('ErrorLogger') is not null SELECT 'true' ELSE SELECT 'false'",
-                _sqlConnection);
-
-            var dbExists = sqlCommand.ExecuteReader();
-
-            if (!Convert.ToBoolean(dbExists[0]))
-            {
+            if (!DatabaseExists())
                 return false;
-            }
 
-            sqlCommand = new SqlCommand("IF object_id('dbo.Error') is not null SELECT 'true' ELSE SELECT 'false'",
-                _sqlConnection);
-
-            var errorTableExists = sqlCommand.ExecuteReader();
-
-            if (!Convert.ToBoolean(errorTableExists[0]))
-            {
+            if (!ErrorTableExists())
                 return false;
-            }
 
-            sqlCommand = new SqlCommand("IF object_id('dbo.Transaction') is not null SELECT 'true' ELSE SELECT 'false'",
-                _sqlConnection);
-
-            var transactionTableExists = sqlCommand.ExecuteReader();
-
-            if (!Convert.ToBoolean(transactionTableExists[0]))
-            {
+            if (!TransactionTableExists())
                 return false;
-            }
+
 
             return true;
         }
 
-        private SqlConnection BuildSqlConnection()
+        private void BuildSqlConnection()
         {
             var sqlConnectionBuilder = new SqlConnectionStringBuilder
             {
@@ -72,85 +51,179 @@ namespace MJH.BusinessLogic.Sql
 
             var sqlConnection = new SqlConnection(sqlConnectionBuilder.ConnectionString);
 
-            return sqlConnection;
+            _sqlConnection = sqlConnection;
+        }
+
+        private void BuildMasterSqlConnection()
+        {
+            var sqlConnectionBuilder = new SqlConnectionStringBuilder
+            {
+                DataSource = _config.Sql.ServerInformation.Server,
+                InitialCatalog = "master",
+                UserID = _config.Sql.ServerInformation.Username,
+                Password = _config.Sql.ServerInformation.Password
+            };
+
+            var sqlConnection = new SqlConnection(sqlConnectionBuilder.ConnectionString);
+
+            _sqlConnection = sqlConnection;
         }
 
         public void Create()
         {
-            _config = new ConfigurationHandler().Read();
+            if (!DatabaseExists())
+            {
+                using (_sqlConnection)
+                {
+                    BuildMasterSqlConnection();
 
-            _sqlConnection = BuildSqlConnection();
+                    _sqlConnection.Open();
 
-            var sqlCommand = new SqlCommand("if db_id('ErrorLogger') is not null SELECT 'true' ELSE SELECT 'false'",
+                    var sqlCommand = new SqlCommand($"CREATE DATABASE {_config.Sql.ServerInformation.Database}", _sqlConnection);
+
+                    sqlCommand.ExecuteNonQuery();
+
+                    _sqlConnection.Close();
+                }
+            }
+
+            if (!ErrorTableExists())
+            {
+                using (_sqlConnection)
+                {
+                    BuildSqlConnection();
+
+                    _sqlConnection.Open();
+
+                    var createSqlCommand = new SqlCommand(
+                        "CREATE TABLE [dbo].[Error] ([Id] int IDENTITY(1, 1) NOT NULL, [LoggingLevel] nvarchar(10)  NULL, [ErrorType] nvarchar(200)  NULL, [Message] nvarchar(4000)  NULL, [DateTimeUTC] datetime  NULL); ",
+                        _sqlConnection);
+
+                    createSqlCommand.ExecuteNonQuery();
+
+                    createSqlCommand =
+                        new SqlCommand(
+                            "ALTER TABLE [dbo].[Error] ADD CONSTRAINT [PK_Errors] PRIMARY KEY CLUSTERED([Id] ASC); ",
+                            _sqlConnection);
+
+                    createSqlCommand.ExecuteNonQuery();
+
+                    _sqlConnection.Close();
+                }
+               
+            }
+
+            if (!TransactionTableExists())
+            {
+                using (_sqlConnection)
+                {
+                    BuildSqlConnection();
+
+                    _sqlConnection.Open();
+
+                    var sqlCommand =
+                        new SqlCommand(
+                            "CREATE TABLE [dbo].[Transaction] ([Id] int IDENTITY(1, 1) NOT NULL, [DateTime] datetime  NULL, [SourceId] nvarchar(max)  NULL, [Message] nvarchar(max)  NULL); ",
+                            _sqlConnection);
+
+                    sqlCommand.ExecuteNonQuery();
+
+                    sqlCommand =
+                        new SqlCommand(
+                            "ALTER TABLE [dbo].[Transaction] ADD CONSTRAINT[PK_Transaction] PRIMARY KEY CLUSTERED([Id] ASC); ",
+                            _sqlConnection);
+                    sqlCommand.ExecuteNonQuery();
+
+                    _sqlConnection.Close();
+                }
+            }
+
+            if(_sqlConnection.State == ConnectionState.Open)
+                _sqlConnection.Close();
+        }
+
+        private bool DatabaseExists()
+        {
+            BuildMasterSqlConnection();
+            var sqlCommand = new SqlCommand("if db_id('ErrorLogger') is not null SELECT 'true' as Result ELSE SELECT 'false' as Result",
                 _sqlConnection);
 
             using (_sqlConnection)
             {
                 _sqlConnection.Open();
 
-                var dbExists = sqlCommand.ExecuteReader();
-
-                if (!Convert.ToBoolean(dbExists[0]))
+                using (var dbExists = sqlCommand.ExecuteReader())
                 {
-                    sqlCommand = new SqlCommand("CREATE DATABASE @DatabaseName", _sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@DatabaseName", _config.Sql.ServerInformation.Database);
-
-                    sqlCommand.ExecuteNonQuery();
-                }
-
-                sqlCommand = new SqlCommand("IF object_id('dbo.Error') is not null SELECT 'true' ELSE SELECT 'false'",
-                    _sqlConnection);
-
-                var errorTableExists = sqlCommand.ExecuteReader();
-
-                if (!Convert.ToBoolean(errorTableExists[0]))
-                {
-                    sqlCommand = new SqlCommand("CREATE TABLE [dbo].[Errors] ([Id] int IDENTITY(1, 1) NOT NULL, [LoggingLevel] nvarchar(10)  NULL, [ErrorType] nvarchar(200)  NULL, [Message] nvarchar(4000)  NULL, [DateTimeUTC] datetime  NULL); ", _sqlConnection);
-
-                    sqlCommand.ExecuteNonQuery();
-
-                    sqlCommand = new SqlCommand("ALTER TABLE [dbo].[Errors] ADD CONSTRAINT [PK_Errors] PRIMARY KEY CLUSTERED([Id] ASC); ", _sqlConnection);
-
-                    sqlCommand.ExecuteNonQuery();
-
-                }
-
-                sqlCommand = new SqlCommand("IF object_id('dbo.Transaction') is not null SELECT 'true' ELSE SELECT 'false'",
-                    _sqlConnection);
-
-                var transactionTableExists = sqlCommand.ExecuteReader();
-
-                if (!Convert.ToBoolean(transactionTableExists[0]))
-                {
-                    sqlCommand = new SqlCommand("CREATE TABLE [dbo].[Transactions] ([Id] int IDENTITY(1, 1) NOT NULL, [DateTime] datetime  NULL, [SourceId] nvarchar(max)  NULL, [Message] nvarchar(max)  NULL); ", _sqlConnection);
-
-                    sqlCommand.ExecuteNonQuery();
-
-                    sqlCommand = new SqlCommand("ALTER TABLE [dbo].[Transactions] ADD CONSTRAINT[PK_Transactions] PRIMARY KEY CLUSTERED([Id] ASC); ", _sqlConnection);
-                    sqlCommand.ExecuteNonQuery();
+                    while (dbExists.Read())
+                    {
+                        if (!Convert.ToBoolean(dbExists["Result"]))
+                        {
+                            return false;
+                        }
+                    }
                 }
 
                 _sqlConnection.Close();
             }
+
+            return true;
         }
 
-        private void CreateSqlConnection()
+        private bool ErrorTableExists()
         {
-            var sqlConnectionStringBuilder = new SqlConnectionStringBuilder
+            BuildSqlConnection();
+            using (_sqlConnection)
             {
-                DataSource = _config.Sql.ServerInformation.Server,
-                InitialCatalog = _config.Sql.ServerInformation.Database,
-                UserID = _config.Sql.ServerInformation.Username,
-                Password = _config.Sql.ServerInformation.Password
-            };
+                var sqlCommand = new SqlCommand("IF object_id('dbo.Error') is not null SELECT 'true' as Result ELSE SELECT 'false' as Result",
+                    _sqlConnection);
 
-            var sqlConnection = new SqlConnection(sqlConnectionStringBuilder.ConnectionString);
+                _sqlConnection.Open();
 
-            _sqlConnection = sqlConnection;
+                using (var errorTableExists = sqlCommand.ExecuteReader())
+                {
+                    while (errorTableExists.Read())
+                    {
+                        if (!Convert.ToBoolean(errorTableExists["Result"]))
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                _sqlConnection.Close();
+            }
+
+            return true;
         }
 
-        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error,
-            DateTime dateTime)
+        private bool TransactionTableExists()
+        {
+            BuildSqlConnection();
+            using (_sqlConnection)
+            {
+                _sqlConnection.Open();
+
+                var sqlCommand = new SqlCommand("IF object_id('dbo.Transaction') is not null SELECT 'true' as Result ELSE SELECT 'false' as Result",
+                    _sqlConnection);
+
+                using (var transactionTableExists = sqlCommand.ExecuteReader())
+                {
+                    while (transactionTableExists.Read())
+                    {
+                        if (!Convert.ToBoolean(transactionTableExists["Result"]))
+                        {
+                            return false;
+                        }
+                    }
+                }
+
+                _sqlConnection.Close();
+            }
+
+            return true;
+        }
+
+        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             var sqlError = new Error
             {
@@ -160,13 +233,15 @@ namespace MJH.BusinessLogic.Sql
                 Message = error
             };
 
+            BuildSqlConnection();
+
             var sqlCommand =
                 new SqlCommand("INSERT INTO dbo.Error VALUES (@LoggingLevel, @ErrorType, @Message, @DateTimeUTC)",
                     _sqlConnection);
             sqlCommand.Parameters.AddWithValue("@LoggingLevel", sqlError.LoggingLevel);
             sqlCommand.Parameters.AddWithValue("@ErrorType", sqlError.ErrorType);
             sqlCommand.Parameters.AddWithValue("@Message", sqlError.Message);
-            sqlCommand.Parameters.AddWithValue("@DateTimeUTC", sqlError.DateTimeUTC);
+            sqlCommand.Parameters.AddWithValue("@DateTimeUTC", sqlError.DateTimeUTC.ToUniversalTime());
 
             using (_sqlConnection)
             {
@@ -190,6 +265,8 @@ namespace MJH.BusinessLogic.Sql
             var sqlCommand = new SqlCommand("DELETE FROM dbo.Error WHERE [DateTimeUTC] < @history");
             sqlCommand.Parameters.AddWithValue("@history", calculatedPurgeDate);
 
+            BuildSqlConnection();
+
             _sqlConnection.Open();
             sqlCommand.ExecuteNonQuery();
             _sqlConnection.Close();
@@ -197,11 +274,14 @@ namespace MJH.BusinessLogic.Sql
 
         public void Write(DateTime logDateTime, string sourceId, string logMessage)
         {
+            BuildSqlConnection();
+
             using (_sqlConnection)
             {
                 _sqlConnection.Open();
 
-                var sqlCommand = new SqlCommand("INSERT INTO dbo.Transaction VALUES (GETDATE(), @SourceId, @Message)");
+                var sqlCommand = new SqlCommand("INSERT INTO dbo.[Transaction] VALUES (@DateTime, @SourceId, @Message)", _sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@DateTime", DateTime.Now.ToUniversalTime());
                 sqlCommand.Parameters.AddWithValue("@SourceId", sourceId);
                 sqlCommand.Parameters.AddWithValue("@Message", logMessage);
 

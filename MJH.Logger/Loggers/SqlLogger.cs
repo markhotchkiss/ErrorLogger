@@ -3,7 +3,6 @@ using MJH.BusinessLogic.Sql;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
-using MJH.Entities;
 
 namespace MJH.Loggers
 {

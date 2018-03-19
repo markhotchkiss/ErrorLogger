@@ -55,5 +55,14 @@ namespace MJH.UnitTests
         {
 
         }
+
+        [Test, Order(5)]
+        public void Write_Transaction()
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                Logger.LogTransaction("My Source", "This is a transaction message");
+            }
+        }
     }
 }

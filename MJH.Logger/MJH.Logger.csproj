@@ -207,7 +207,6 @@
     <Compile Include="BusinessLogic\Sql\LoggingSql.cs" />
     <Compile Include="BusinessLogic\Sqlite\LoggingSqlite.cs" />
     <Compile Include="BusinessLogic\Configuration\ConfigurationHandler.cs" />
-    <Compile Include="Entities\SqlConnectionBuilder.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Factories\LogReaderFactory.cs" />
     <Compile Include="Factories\TransactionFactory.cs" />

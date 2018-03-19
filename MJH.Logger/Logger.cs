@@ -1,5 +1,4 @@
-﻿using MJH.Entities;
-using MJH.Factories;
+﻿using MJH.Factories;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
@@ -12,6 +11,7 @@ namespace MJH
         private static readonly ILogger LoggerInterface;
         private static readonly ILogReader LogReader;
         private static readonly ILogReaderV2 LogReaderV2;
+        private static readonly ITransaction TransactionInterface;
 
         static Logger()
         {
@@ -21,6 +21,9 @@ namespace MJH
             var logReaderFactory = new LogReaderFactory();
             LogReader = logReaderFactory.GetLogReaderRepository();
             LogReaderV2 = logReaderFactory.GetLogReaderV2Repository();
+
+            var transactionFactory = new TransactionFactory();
+            TransactionInterface = transactionFactory.GetTransactionRepository();
         }
 
         /// <summary>
@@ -125,6 +128,23 @@ namespace MJH
                 LoggerInterface.LogDebug(logCategory, message);
             }
             catch
+            {
+            }
+        }
+
+        /// <summary>
+        /// Logs a new record to the Log Store as a type Transaction with the given String Message.
+        /// </summary>
+        /// <param name="sourceId"></param>
+        /// <param name="logMessage"></param>
+        public static void LogTransaction(string sourceId, string logMessage)
+        {
+            try
+            {
+                Console.WriteLine($"{DateTime.Now} - {sourceId} - {logMessage}");
+                TransactionInterface.LogTransaction(DateTime.Now, sourceId, logMessage);
+            }
+            catch(Exception exception)
             {
             }
         }

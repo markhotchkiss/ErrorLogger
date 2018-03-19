@@ -1,9 +1,7 @@
 ﻿using System;
-using MJH.Entities;
 using MJH.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using MJH.Models;
 
 namespace MJH.BusinessLogic.Sql

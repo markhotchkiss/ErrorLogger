@@ -1,6 +1,5 @@
 ﻿using MJH.BusinessLogic.Generic;
 using MJH.BusinessLogic.TextLogger;
-using MJH.Entities;
 using MJH.Interfaces;
 using MJH.Models;
 using System;
