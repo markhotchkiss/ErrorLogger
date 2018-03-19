@@ -7,18 +7,15 @@ using MJH.Entities;
 
 namespace MJH.Loggers
 {
-    public class SqlLogger : ILogger
+    public class SqlLogger : ILogger, ITransaction
     {
         public LoggingLevel LoggingLevel { get; set; }
 
         private readonly LoggingSql _logger;
 
-        private readonly ErrorLoggerEntities _context =
-            new ErrorLoggerEntities(new SqlConnectionBuilder().ConnectionString().ToString());
-
         public SqlLogger()
         {
-            _logger = new LoggingSql(_context);
+            _logger = new LoggingSql();
 
             if (!_logger.Exists())
             {
@@ -86,6 +83,11 @@ namespace MJH.Loggers
             }
 
             _logger.Write("DEBUG", logCategory, message, DateTime.Now);
+        }
+
+        public void LogTransaction(DateTime logDateTime, string sourceId, string logMessage)
+        {
+            _logger.Write(logDateTime, sourceId, logMessage);
         }
     }
 }

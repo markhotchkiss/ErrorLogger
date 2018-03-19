@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace MJH.Loggers
 {
-    public class TextLogger : ILogger, ILogReader
+    public class TextLogger : ILogger, ILogReader, ITransaction
     {
         public string LogOutputFileLocation { get; set; }
         public string LogOutputFileName { get; set; }
@@ -129,6 +129,12 @@ namespace MJH.Loggers
         {
             var logReader = new TextFileReader();
             return logReader.Read();
+        }
+
+        public void LogTransaction(DateTime logDateTime, string sourceId, string logMessage)
+        {
+            SetupLogLocation();
+            _loggingFile.Write(logDateTime, sourceId, logMessage);
         }
     }
 }

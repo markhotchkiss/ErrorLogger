@@ -59,5 +59,31 @@ namespace MJH.BusinessLogic.TextLogger
 
             return fileSize;
         }
+
+        public void Write(DateTime logDateTime, string sourceId, string logMessage)
+        {
+            var log = new FileInfo(LoggingFileLocation + "\\" + LoggingFileName);
+
+            if (!log.Exists)
+            {
+                using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
+                {
+                    var textToWrite = $"\"Id\",\"SourceId\",\"Message\",\"DateTimeUTC\"";
+
+                    streamWriter.WriteLine(textToWrite);
+                    streamWriter.Flush();
+                    streamWriter.Close();
+                }
+            }
+
+            using (var streamWriter = new StreamWriter(LoggingFileLocation + "\\" + LoggingFileName, true))
+            {
+                var textToWrite = $"\"0\",\"{ sourceId }\",\"{logMessage.Replace("\"", "")}\",\"{logDateTime:yyyy-MM-dd HH:mm:ss}\"";
+
+                streamWriter.WriteLine(textToWrite);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
+        }
     }
 }

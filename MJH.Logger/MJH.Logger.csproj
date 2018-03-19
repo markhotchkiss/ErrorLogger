@@ -207,28 +207,10 @@
     <Compile Include="BusinessLogic\Sql\LoggingSql.cs" />
     <Compile Include="BusinessLogic\Sqlite\LoggingSqlite.cs" />
     <Compile Include="BusinessLogic\Configuration\ConfigurationHandler.cs" />
-    <Compile Include="Entities\EntityAuth.cs" />
-    <Compile Include="Entities\Error.cs">
-      <DependentUpon>ErrorDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ErrorDb.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorDb.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ErrorDb.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorDb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Entities\ErrorDb.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ErrorDb.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Entities\SqlConnectionBuilder.cs" />
     <Compile Include="Factories\LoggerFactory.cs" />
     <Compile Include="Factories\LogReaderFactory.cs" />
+    <Compile Include="Factories\TransactionFactory.cs" />
     <Compile Include="Interfaces\IArchive.cs" />
     <Compile Include="Interfaces\IConfiguration.cs" />
     <Compile Include="Interfaces\IConfigurationV2.cs" />
@@ -237,37 +219,23 @@
     <Compile Include="Interfaces\ILoggingWriter.cs" />
     <Compile Include="Interfaces\ILogReader.cs" />
     <Compile Include="Interfaces\ILogReaderV2.cs" />
+    <Compile Include="Interfaces\ITransaction.cs" />
+    <Compile Include="Interfaces\ITransactionWriter.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Loggers\SqliteLogger.cs" />
     <Compile Include="Loggers\SqlLogger.cs" />
     <Compile Include="Loggers\TextLogger.cs" />
     <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\Error.cs" />
     <Compile Include="Models\LoggingLevelModel.cs" />
     <Compile Include="Models\LoggingTypeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Entities\ErrorDb.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ErrorDb.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Entities\ErrorDb.edmx.diagram">
-      <DependentUpon>ErrorDb.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Entities\ErrorDb.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ErrorDb.edmx</DependentUpon>
-      <LastGenOutput>ErrorDb.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entities\ErrorDb.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ErrorDb.edmx</DependentUpon>
-      <LastGenOutput>ErrorDb.cs</LastGenOutput>
-    </Content>
     <Content Include="LoggerConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
