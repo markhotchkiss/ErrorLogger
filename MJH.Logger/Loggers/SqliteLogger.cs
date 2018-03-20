@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace MJH.Loggers
 {
-    public class SqliteLogger : ILogger
+    public class SqliteLogger : ILogger, ITransaction
     {
         public LoggingLevel LoggingLevel { get; set; }
 
@@ -83,6 +83,11 @@ namespace MJH.Loggers
         }
 
         public IReadOnlyCollection<Error> ReadLog()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void LogTransaction(DateTime logDateTime, string sourceId, string logMessage)
         {
             throw new NotImplementedException();
         }

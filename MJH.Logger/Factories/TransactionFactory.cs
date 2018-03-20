@@ -34,8 +34,12 @@ namespace MJH.Factories
                 case LoggingTypeModel.LogOutputType.SQL:
                     result = new SqlLogger();
                     break;
+                case LoggingTypeModel.LogOutputType.SQLite:
+                    result = new SqliteLogger();
+                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
+
             }
             return result;
         }

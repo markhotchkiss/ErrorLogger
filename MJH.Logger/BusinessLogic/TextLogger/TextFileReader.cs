@@ -26,7 +26,7 @@ namespace MJH.BusinessLogic.TextLogger
 
             var csv = new CsvReader(new StreamReader(fs));
 
-            csv.Configuration.QuoteAllFields = true;
+            csv.Configuration.IgnoreQuotes = false;
             csv.Configuration.HasHeaderRecord = true;
 
             var errorLog = csv.GetRecords<Error>();

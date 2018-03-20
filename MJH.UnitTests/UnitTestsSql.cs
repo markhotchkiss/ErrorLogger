@@ -41,7 +41,7 @@ namespace MJH.UnitTests
 
             var result = Logger.Read(recordsToRead);
 
-            Assert.AreEqual(recordsToRead, result);
+            Assert.AreEqual(recordsToRead, result.Count);
         }
 
         [Test, Order(3)]
