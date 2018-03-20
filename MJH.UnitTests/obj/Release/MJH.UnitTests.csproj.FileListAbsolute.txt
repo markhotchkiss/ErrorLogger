@@ -22,3 +22,10 @@ C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\obj\Release\MJH.UnitT
 C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\obj\Release\MJH.UnitTests.csproj.CopyComplete
 C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\obj\Release\MJH.UnitTests.dll
 C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\obj\Release\MJH.UnitTests.pdb
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\NUnit3.TestAdapter.dll
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\NUnit3.TestAdapter.pdb
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\nunit.engine.dll
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\nunit.engine.api.dll
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\Mono.Cecil.dll
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\nunit.framework.pdb
+C:\SourceCode\GitHub\ErrorLogger\ErrorLogger\MJH.UnitTests\bin\Release\System.Data.SQLite.dll.config

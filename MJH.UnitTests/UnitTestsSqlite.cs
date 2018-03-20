@@ -115,16 +115,17 @@ namespace MJH.UnitTests
         [Test, Order(6)]
         public void Read_BetweenDates()
         {
-            var startDate = DateTime.Now.AddMinutes(-10);
+            var startDate = DateTime.Now.AddDays(-10);
             var endDate = DateTime.Now;
 
             var log = Logger.Read(startDate, endDate);
 
+            Assert.GreaterOrEqual(log.Count, 1);
             Assert.That(log.Count(dt => dt.DateTimeUTC < startDate) == 0);
             Assert.That(log.Count(dt => dt.DateTimeUTC > endDate) == 0);
         }
 
-        [Test, Order(6)]
+        [Test, Order(7)]
         public void Read_SpecificLoggingLevel()
         {
             var log = Logger.Read(LoggingTypeModel.LogCategory.Process);

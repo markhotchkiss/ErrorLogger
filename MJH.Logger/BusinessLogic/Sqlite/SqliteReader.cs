@@ -70,7 +70,7 @@ namespace MJH.BusinessLogic.Sqlite
             var command = "SELECT * FROM Error WHERE ErrorType = @Category ORDER BY DateTimeUTC DESC";
 
             var sqlitecommand = new SQLiteCommand(command, _dbConnection);
-            sqlitecommand.Parameters.AddWithValue("@Category", category);
+            sqlitecommand.Parameters.AddWithValue("@Category", category.ToString());
 
             var reader = ExecuteSqLiteNonQuery(sqlitecommand);
 
