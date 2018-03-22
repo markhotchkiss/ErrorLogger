@@ -23,17 +23,7 @@ namespace MJH.BusinessLogic.Sql
 
         private void BuildSqlConnection()
         {
-            var sqlConnectionBuilder = new SqlConnectionStringBuilder
-            {
-                DataSource = _config.Sql.ServerInformation.Server,
-                InitialCatalog = _config.Sql.ServerInformation.Database,
-                UserID = _config.Sql.ServerInformation.Username,
-                Password = _config.Sql.ServerInformation.Password
-            };
-
-            var sqlConnection = new SqlConnection(sqlConnectionBuilder.ConnectionString);
-
-            _sqlConnection = sqlConnection;
+            _sqlConnection = new SqlConnectionCreator(_config).BuildSqlConnection();
         }
 
         public IReadOnlyCollection<Error> Read()
