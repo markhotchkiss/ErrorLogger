@@ -41,20 +41,12 @@ namespace MJH.BusinessLogic.Sql
 
         private void BuildSqlConnection()
         {
-            _sqlConnection = new SqlConnectionCreator(_config).BuildSqlConnection();
+            _sqlConnection = new SqlConnectionCreator(_config).BuildSqlConnection(Database.DefaultErrorLogger);
         }
 
-        private void BuildMasterSqlConnection()
+        private void BuildMasterSqlConnection(Database database)
         {
-            var sqlConnectionBuilder = new SqlConnectionStringBuilder
-            {
-                DataSource = _config.Sql.ServerInformation.Server,
-                InitialCatalog = "master",
-                UserID = _config.Sql.ServerInformation.Username,
-                Password = _config.Sql.ServerInformation.Password
-            };
-
-            var sqlConnection = new SqlConnection(sqlConnectionBuilder.ConnectionString);
+            var sqlConnection = new SqlConnection(new SqlConnectionCreator(_config).BuildSqlConnection(database).ConnectionString);
 
             _sqlConnection = sqlConnection;
         }
@@ -65,7 +57,7 @@ namespace MJH.BusinessLogic.Sql
             {
                 using (_sqlConnection)
                 {
-                    BuildMasterSqlConnection();
+                    BuildMasterSqlConnection(Database.Master);
 
                     _sqlConnection.Open();
 
@@ -134,7 +126,7 @@ namespace MJH.BusinessLogic.Sql
 
         private bool DatabaseExists()
         {
-            BuildMasterSqlConnection();
+            BuildMasterSqlConnection(Database.Master);
             var sqlCommand = new SqlCommand("if db_id('ErrorLogger') is not null SELECT 'true' as Result ELSE SELECT 'false' as Result",
                 _sqlConnection);
 

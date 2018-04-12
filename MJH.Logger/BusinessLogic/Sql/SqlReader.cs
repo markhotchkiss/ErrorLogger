@@ -23,7 +23,7 @@ namespace MJH.BusinessLogic.Sql
 
         private void BuildSqlConnection()
         {
-            _sqlConnection = new SqlConnectionCreator(_config).BuildSqlConnection();
+            _sqlConnection = new SqlConnectionCreator(_config).BuildSqlConnection(Database.DefaultErrorLogger);
         }
 
         public IReadOnlyCollection<Error> Read()

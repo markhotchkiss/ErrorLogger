@@ -32,7 +32,7 @@ namespace MJH.UnitTests
         public void CreateSqlConnection()
         {
             var sqlConnectionCreator = new SqlConnectionCreator(_config);
-            var sqlConnection = sqlConnectionCreator.BuildSqlConnection();
+            var sqlConnection = sqlConnectionCreator.BuildSqlConnection(Database.DefaultErrorLogger);
 
             try
             {

@@ -12,7 +12,7 @@ namespace MJH.BusinessLogic.Sql
             _config = config;
         }
 
-        public SqlConnection BuildSqlConnection()
+        public SqlConnection BuildSqlConnection(Database database)
         {
             SqlConnectionStringBuilder sqlConnectionBuilder = null;
             SqlConnection sqlConnection;
@@ -22,7 +22,7 @@ namespace MJH.BusinessLogic.Sql
                 sqlConnectionBuilder = new SqlConnectionStringBuilder
                 {
                     DataSource = _config.Sql.ServerInformation.Server,
-                    InitialCatalog = _config.Sql.ServerInformation.Database,
+                    InitialCatalog = DatabaseName(database),
                     UserID = _config.Sql.ServerInformation.Username,
                     Password = _config.Sql.ServerInformation.Password
                 };
@@ -35,7 +35,7 @@ namespace MJH.BusinessLogic.Sql
             sqlConnectionBuilder = new SqlConnectionStringBuilder
             {
                 DataSource = _config.Sql.ServerInformation.Server,
-                InitialCatalog = _config.Sql.ServerInformation.Database,
+                InitialCatalog = DatabaseName(database),
                 IntegratedSecurity = true
             };
 
@@ -52,6 +52,16 @@ namespace MJH.BusinessLogic.Sql
             }
 
             return false;
+        }
+
+        private string DatabaseName(Database database)
+        {
+            if (database == Database.DefaultErrorLogger)
+            {
+                return _config.Sql.ServerInformation.Database;
+            }
+
+            return "master";
         }
     }
 }

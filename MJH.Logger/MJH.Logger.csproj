@@ -192,6 +192,7 @@
   <ItemGroup>
     <Compile Include="BusinessLogic\Sqlite\AllowedCharacters.cs" />
     <Compile Include="BusinessLogic\Sqlite\SqliteReader.cs" />
+    <Compile Include="BusinessLogic\Sql\Database.cs" />
     <Compile Include="BusinessLogic\Sql\SqlConnectionCreator.cs" />
     <Compile Include="BusinessLogic\Sql\SqlReader.cs" />
     <Compile Include="BusinessLogic\TextLogger\TextFileReader.cs" />
