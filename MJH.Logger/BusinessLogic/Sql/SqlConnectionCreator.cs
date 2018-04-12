@@ -3,7 +3,7 @@ using MJH.Models;
 
 namespace MJH.BusinessLogic.Sql
 {
-    internal class SqlConnectionCreator
+    public class SqlConnectionCreator
     {
         private readonly LoggerConfig _config;
 
@@ -12,7 +12,7 @@ namespace MJH.BusinessLogic.Sql
             _config = config;
         }
 
-        internal SqlConnection BuildSqlConnection()
+        public SqlConnection BuildSqlConnection()
         {
             SqlConnectionStringBuilder sqlConnectionBuilder = null;
             SqlConnection sqlConnection;

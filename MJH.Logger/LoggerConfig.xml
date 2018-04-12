@@ -6,8 +6,8 @@
     <ServerInformation>
       <Server>localhost</Server>
       <Database>ErrorLogger</Database>
-      <Username>TestUser</Username>
-      <Password>T3stUs3r!</Password>
+      <Username></Username>
+      <Password></Password>
     </ServerInformation>
     <LoggerInformation>
       <HistoryToKeep>0</HistoryToKeep> <!--Use 0 for no truncation-->

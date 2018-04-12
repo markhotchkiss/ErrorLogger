@@ -2,6 +2,9 @@
 using MJH.Models;
 using NUnit.Framework;
 using System;
+using System.Data;
+using System.Data.SqlClient;
+using MJH.BusinessLogic.Sql;
 
 namespace MJH.UnitTests
 {
@@ -23,6 +26,25 @@ namespace MJH.UnitTests
             {
                 throw new Exception("Set the logger type to SQL in the Config file before running these tests.");
             }
+        }
+
+        [Test]
+        public void CreateSqlConnection()
+        {
+            var sqlConnectionCreator = new SqlConnectionCreator(_config);
+            var sqlConnection = sqlConnectionCreator.BuildSqlConnection();
+
+            try
+            {
+                sqlConnection.Open();
+
+                Assert.That(sqlConnection.State == ConnectionState.Open);
+            }
+            catch (Exception exception)
+            {
+                Assert.That(exception == null);
+            }
+
         }
 
         [Test, Order(1)]
