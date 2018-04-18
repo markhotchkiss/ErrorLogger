@@ -38,9 +38,8 @@ namespace MJH
                 Console.WriteLine($"{DateTime.Now} - {logCategory} - {exception}");
                 LoggerInterface.LogError(logCategory, exception);
             }
-            catch(Exception logException)
+            catch
             {
-                Console.WriteLine(logException.Message);
             }
         }
 

@@ -49,18 +49,28 @@ namespace MJH.BusinessLogic.Sqlite
 
         private int ExecuteSqLiteNonQuery(string command)
         {
-            using (_dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};"))
+            try
             {
-                _dbConnection.Open();
+                using (_dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};"))
+                {
+                    _dbConnection.Open();
 
-                var sqliteCommand = new SQLiteCommand(command, _dbConnection);
+                    var sqliteCommand = new SQLiteCommand(command, _dbConnection);
 
-                var result = sqliteCommand.ExecuteNonQuery();
+                    var result = sqliteCommand.ExecuteNonQuery();
 
-                _dbConnection.Close();
+                    _dbConnection.Close();
 
-                return result;
+                    return result;
+                }
             }
+            catch
+            {
+                Console.WriteLine($"{DateTime.Now} - UNABLE TO ACCESS DATABASE, RECORD NOT WRITTEN.");
+
+                return 0;
+            }
+
         }
 
         public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
