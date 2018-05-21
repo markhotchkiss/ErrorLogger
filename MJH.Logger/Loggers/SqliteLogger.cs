@@ -29,7 +29,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.WriteToErrorLog("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -39,7 +39,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.WriteToErrorLog("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -49,7 +49,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _logger.WriteToErrorLog("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, string message)
@@ -59,7 +59,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("ERROR", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
+            _logger.WriteToErrorLog("ERROR", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
@@ -69,7 +69,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("INFO", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
+            _logger.WriteToErrorLog("INFO", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
@@ -79,7 +79,7 @@ namespace MJH.Loggers
                 return;
             }
 
-            _logger.Write("DEBUG", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
+            _logger.WriteToErrorLog("DEBUG", logCategory, AllowedCharacters.Replace(message), DateTime.Now);
         }
 
         public IReadOnlyCollection<Error> ReadLog()
@@ -89,7 +89,7 @@ namespace MJH.Loggers
 
         public void LogTransaction(DateTime logDateTime, string sourceId, string logMessage)
         {
-            throw new NotImplementedException();
+            _logger.WriteToTransactionLog(sourceId, logMessage, logDateTime);
         }
     }
 }

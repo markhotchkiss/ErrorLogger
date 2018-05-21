@@ -38,12 +38,20 @@ namespace MJH.BusinessLogic.Sqlite
             //Create a new DB with required tables.
             SQLiteConnection.CreateFile(_dbLocation + "\\" + _dbName);
             CreateErrorTable();
+            CreateTransactionTable();
         }
 
         private void CreateErrorTable()
         {
             const string createCommand =
                 "CREATE TABLE Error (Id INTEGER PRIMARY KEY AUTOINCREMENT, LoggingLevel nvarchar(10), ErrorType nvarchar(200), Message nvarchar(4000), DateTimeUTC DateTime)";
+            ExecuteSqLiteNonQuery(createCommand);
+        }
+
+        private void CreateTransactionTable()
+        {
+            const string createCommand =
+                "CREATE TABLE TransactionLog (Id INTEGER PRIMARY KEY AUTOINCREMENT, DateTime datetime, SourceId nvarchar(4000), Message nvarchar(4000))";
             ExecuteSqLiteNonQuery(createCommand);
         }
 
@@ -64,7 +72,7 @@ namespace MJH.BusinessLogic.Sqlite
                     return result;
                 }
             }
-            catch
+            catch(Exception e)
             {
                 Console.WriteLine($"{DateTime.Now} - UNABLE TO ACCESS DATABASE, RECORD NOT WRITTEN.");
 
@@ -73,9 +81,15 @@ namespace MJH.BusinessLogic.Sqlite
 
         }
 
-        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
+        public void WriteToErrorLog(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             ExecuteSqLiteNonQuery($"INSERT INTO Error VALUES(NULL,'{loggingLevel}','{logCategory}','{error}','{dateTime:yyyy-MM-dd HH:mm:ss}')");
+        }
+
+        public void WriteToTransactionLog(string sourceId, string message, DateTime dateTime)
+        {
+            ExecuteSqLiteNonQuery(
+                $"INSERT INTO TransactionLog VALUES(NULL, '{dateTime:yyyy-MM-dd HH:mm:ss}', '{sourceId}', '{message}')");
         }
 
         public void Purge()

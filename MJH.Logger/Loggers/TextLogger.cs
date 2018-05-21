@@ -31,7 +31,7 @@ namespace MJH.Loggers
 
             SetupLogLocation();
 
-            _loggingFile.Write("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _loggingFile.WriteToErrorLog("ERROR", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -44,7 +44,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
-            _loggingFile.Write("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _loggingFile.WriteToErrorLog("INFO", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, Exception exception)
@@ -57,7 +57,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
+            _loggingFile.WriteToErrorLog("DEBUG", logCategory, GenerateError.GetException(exception), DateTime.Now);
         }
 
         public void LogError(LoggingTypeModel.LogCategory logCategory, string message)
@@ -70,7 +70,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
-            _loggingFile.Write("ERROR", logCategory, message, DateTime.Now);
+            _loggingFile.WriteToErrorLog("ERROR", logCategory, message, DateTime.Now);
         }
 
         public void LogInfo(LoggingTypeModel.LogCategory logCategory, string message)
@@ -83,7 +83,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
-            _loggingFile.Write("INFO", logCategory, message, DateTime.Now);
+            _loggingFile.WriteToErrorLog("INFO", logCategory, message, DateTime.Now);
         }
 
         public void LogDebug(LoggingTypeModel.LogCategory logCategory, string message)
@@ -96,7 +96,7 @@ namespace MJH.Loggers
             }
 
             SetupLogLocation();
-            _loggingFile.Write("DEBUG", logCategory, message, DateTime.Now);
+            _loggingFile.WriteToErrorLog("DEBUG", logCategory, message, DateTime.Now);
         }
 
         private void SetupLogLocation()

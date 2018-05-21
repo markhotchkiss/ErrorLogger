@@ -9,7 +9,7 @@ namespace MJH.Interfaces
 
         void Create();
 
-        void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error,
+        void WriteToErrorLog(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error,
             DateTime dateTime);
     }
 }

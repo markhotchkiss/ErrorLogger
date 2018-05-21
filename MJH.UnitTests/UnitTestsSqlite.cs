@@ -133,5 +133,11 @@ namespace MJH.UnitTests
             Assert.That(log.Count > 0);
             Assert.That(log.Count(l => l.ErrorType != "Process") == 0);
         }
+
+        [Test, Order(8)]
+        public void WriteTransactionLog()
+        {
+            Logger.LogTransaction("MY SOURCE", "My Message");
+        }
     }
 }

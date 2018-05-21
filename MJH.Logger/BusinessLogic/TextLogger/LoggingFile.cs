@@ -25,7 +25,7 @@ namespace MJH.BusinessLogic.TextLogger
             directoryInfo.Create();
         }
 
-        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
+        public void WriteToErrorLog(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             var log = new FileInfo(LoggingFileLocation + "\\" + LoggingFileName);
 
