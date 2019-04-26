@@ -205,7 +205,7 @@ namespace MJH.BusinessLogic.Sql
             return true;
         }
 
-        public void Write(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
+        public void WriteToErrorLog(string loggingLevel, LoggingTypeModel.LogCategory logCategory, string error, DateTime dateTime)
         {
             var sqlError = new Error
             {
