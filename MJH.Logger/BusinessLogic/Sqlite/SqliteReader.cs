@@ -83,16 +83,12 @@ namespace MJH.BusinessLogic.Sqlite
 
             while (reader.Read())
             {
-                DateTime dateTime;
-                DateTime.TryParseExact(reader["DateTimeUTC"].ToString(), "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture, DateTimeStyles.None,
-                    out dateTime);
-
                 var error = new Error
                 {
                     LoggingLevel = reader["LoggingLevel"].ToString(),
                     ErrorType = reader["ErrorType"].ToString(),
                     Message = reader["Message"].ToString(),
-                    DateTimeUTC = dateTime
+                    DateTimeUTC = Convert.ToDateTime(reader["DateTimeUTC"].ToString())
                 };
 
                 errorCollection.Add(error);
