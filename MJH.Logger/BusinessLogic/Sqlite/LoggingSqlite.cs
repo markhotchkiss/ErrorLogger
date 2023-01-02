@@ -2,8 +2,8 @@
 using MJH.Interfaces;
 using MJH.Models;
 using System;
-using System.Data.SQLite;
 using System.IO;
+using Microsoft.Data.Sqlite;
 
 namespace MJH.BusinessLogic.Sqlite
 {
@@ -12,7 +12,7 @@ namespace MJH.BusinessLogic.Sqlite
         private readonly string _dbName;
         private readonly string _dbLocation;
 
-        private SQLiteConnection _dbConnection;
+        private SqliteConnection _dbConnection;
         private readonly string _databasePassword = string.Empty;
 
         private readonly LoggerConfig _config;
@@ -36,7 +36,14 @@ namespace MJH.BusinessLogic.Sqlite
         public void Create()
         {
             //Create a new DB with required tables.
-            SQLiteConnection.CreateFile(_dbLocation + "\\" + _dbName);
+
+            using (_dbConnection =
+                       new SqliteConnection(
+                           $"Data Source={_dbLocation + "\\" + _dbName};Password={_databasePassword};"))
+            {
+                _dbConnection.Open();
+            }
+
             CreateErrorTable();
             CreateTransactionTable();
         }
@@ -59,11 +66,11 @@ namespace MJH.BusinessLogic.Sqlite
         {
             try
             {
-                using (_dbConnection = new SQLiteConnection($"Data Source={_dbLocation + "\\" + _dbName};Version=3;Password={_databasePassword};"))
+                using (_dbConnection = new SqliteConnection($"Data Source={_dbLocation + "\\" + _dbName};Password={_databasePassword};"))
                 {
                     _dbConnection.Open();
 
-                    var sqliteCommand = new SQLiteCommand(command, _dbConnection);
+                    var sqliteCommand = new SqliteCommand(command, _dbConnection);
 
                     var result = sqliteCommand.ExecuteNonQuery();
 
